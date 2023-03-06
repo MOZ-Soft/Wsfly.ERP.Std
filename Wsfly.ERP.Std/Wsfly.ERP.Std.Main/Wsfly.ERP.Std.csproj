@@ -745,6 +745,10 @@
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="AppData\Wsfly.DC.ERP%28JXC-STD-V1%29.db" />
+    <None Include="AppData\Wsfly.DC.ERP%28JXC-STD-V3%29.db" />
+    <None Include="AppData\Wsfly.DC.ERP%28KD-STD-V2%29.db" />
+    <None Include="AppData\Wsfly.DC.ERP%28KD-STD-V4%29.db" />
     <None Include="AppData\Wsfly.DC.ERP.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -856,6 +860,7 @@
     <None Include="pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="AppData\数据库使用说明.txt" />
     <Content Include="Plug-In\UMEditor\browser.html" />
     <Content Include="Plug-In\UMEditor\demo.html" />
     <Content Include="Plug-In\UMEditor\dialogs\emotion\emotion.css" />
