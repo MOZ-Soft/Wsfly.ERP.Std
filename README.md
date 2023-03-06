@@ -2,6 +2,12 @@
 
 Visual Studio 2019
 
+
+登陆系统
+账号：admin
+密码：123456
+
+
 默认数据库仅有系统功能，如需有进销存等功能的库，请将/AppData/目录下的数据库复制到/bin/Debug且将文件改名为：Wsfly.DC.ERP.db
 
 
