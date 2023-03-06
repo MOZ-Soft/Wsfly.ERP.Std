@@ -1,0 +1,25 @@
+﻿<mz:BaseWindow x:Class="Wsfly.ERP.Std.Views.Components.PictureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+        Title="图片预览" Height="600" Width="800">
+    <DockPanel AllowDrop="True">
+        <Grid x:Name="gridMain" Width="770" Height="550">
+            <Grid.Resources>
+                <TransformGroup x:Key="ImageView">
+                    <ScaleTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80px" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80px" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.ColumnSpan="3" x:Name="pContent" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</mz:BaseWindow>

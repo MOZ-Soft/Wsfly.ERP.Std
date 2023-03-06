@@ -1,0 +1,266 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.Home.ListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Home"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             xmlns:keCtls="clr-namespace:Wsfly.ERP.Std.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000" Margin="0">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="gridQueryRow" Height="55px"/>
+            <RowDefinition x:Name="gridTopRow" Height="*"/>
+            <RowDefinition x:Name="gridActionsRow" Height="55px"/>
+            <RowDefinition x:Name="gridBottomRow" Height="*"/>
+        </Grid.RowDefinitions>
+        <!--顶部查询行-->
+        <Border x:Name="borderQuery" Grid.Row="0" Background="#22333333">
+            <!--查询行-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <WrapPanel x:Name="panelQuerys" VerticalAlignment="Center" Margin="10 0 0 0"></WrapPanel>
+                <DockPanel Grid.Column="2">
+                    <StackPanel x:Name="panelQueryActions" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0">
+                        <Button x:Name="btnQuery" Style="{DynamicResource btnAction}" VerticalAlignment="Center">查询(Q)</Button>
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
+        </Border>
+
+        <!--主表数据-->
+        <!--<DataGrid x:Name="dataGridTop" Grid.Row="1" Grid.Column="0" Background="#AAFFFFFF" HeadersVisibility="All" Style="{DynamicResource DataGrid}" Padding="5 0 5 0" EnableColumnVirtualization="False" EnableRowVirtualization="False">-->
+        <DataGrid x:Name="dataGridTop" Grid.Row="1" Grid.Column="0" 
+                  Background="#AAFFFFFF" 
+                  HeadersVisibility="All" 
+                  Padding="5 0 5 0"
+                  Style="{DynamicResource DataGrid}">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <EventSetter Event="SizeChanged" Handler="DataGridTop_ColumnHeader_SizeChanged"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Resources>
+                <Style x:Name="styleDataGridTopCell" x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="TopDataGridCell_PreviewMouseLeftButtonDown"></EventSetter>
+                    <EventSetter Event="PreviewMouseRightButtonDown" Handler="TopDataGridCell_PreviewMouseLeftButtonDown"></EventSetter>
+                    <EventSetter Event="GotFocus" Handler="TopDataGridCell_GotFocus"></EventSetter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="#AA0078FF"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}}" Width="40">
+                    <DataGridCheckBoxColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Border Margin="6 0 0 0">
+                                <CheckBox x:Name="cbTopSelectedAll" IsChecked="False" Checked="cbTopSelectedAll_Checked" Unchecked="cbTopSelectedAll_Unchecked" />
+                            </Border>
+                        </DataTemplate>
+                    </DataGridCheckBoxColumn.HeaderTemplate>
+                    <DataGridCheckBoxColumn.ElementStyle>
+                        <Style TargetType="CheckBox">
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridCheckBoxColumn.ElementStyle>
+                </DataGridCheckBoxColumn>
+                <!--<DataGridTemplateColumn Header="序号" SortMemberPath="Id" Width="50" MinWidth="10" IsReadOnly="True" CanUserReorder="True" Visibility="Collapsed">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGridRow}}, Path=Header}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+                <DataGridTextColumn x:Name="ColumnTopId" Header="主键" Binding="{Binding Path=Id}" ElementStyle="{DynamicResource DataGridCellCenter_Number}" Visibility="Collapsed"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="ColumnTopEdit" Header="编辑" Binding="{Binding Path=MZ_IsEdit}" Visibility="Collapsed"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="ColumnTopNew" Header="增加" Binding="{Binding Path=MZ_IsNew}" Visibility="Collapsed"></DataGridTextColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <Border x:Name="borderChooseTop" Grid.Row="1" Grid.Column="0" Width="10" Height="10" Background="Red" CornerRadius="10" VerticalAlignment="Top" Margin="1" HorizontalAlignment="Left" Visibility="Collapsed"></Border>
+        
+        <!--主表分页-->
+        <Grid x:Name="gridTopPage" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 0" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10px"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="borderTopPages" Height="45" CornerRadius="40 0 0 0" Background="#AAFFFFFF" Padding="20 10 10 0" BorderBrush="White" Visibility="Visible">
+                <WrapPanel x:Name="panelTopPages" VerticalAlignment="Center" Height="35"></WrapPanel>
+            </Border>
+            <Border x:Name="btnTopPageExt" Tag="1" Background="#AAFFFFFF" Height="45" Grid.Column="1" Cursor="Hand">
+                <Polygon x:Name="btnTopPageExtTag" Stretch="Fill" Points="0,3 5,0 5,6" Stroke="Gray" StrokeThickness="0" Width="5" Height="10">
+                    <Polygon.Fill>
+                        <SolidColorBrush Color="Black" Opacity="1"/>
+                    </Polygon.Fill>
+                </Polygon>
+            </Border>
+        </Grid>
+
+        <!--主表预览图片-->
+        <Image x:Name="imgTopPreview" Grid.Row="1" Grid.Column="0" Tag="0" Width="0" Height="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 0 50" Visibility="Collapsed"></Image>
+
+        <!--中间操作行-->
+        <Border x:Name="borderActions" Grid.Row="2">
+            <!--中间行-->
+            <DockPanel Background="#22333333">
+                <WrapPanel x:Name="panelActions">
+                    <!--操作按钮-->
+                </WrapPanel>
+                <WrapPanel x:Name="panelWaitingAndResults" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0">
+                    <!--等待及保存结果-->
+                    <keCtls:WaitingUC x:Name="listWaiting" Width="24" Height="24" Visibility="Collapsed"></keCtls:WaitingUC>
+                </WrapPanel>
+            </DockPanel>
+        </Border>
+
+        <!--树型结构-->
+        <StackPanel x:Name="panelTreeUC" Grid.Row="3" Background="#AAFFFFFF">
+            <!--树型结构-->
+        </StackPanel>
+
+        <!--子表数据-->
+        <!--<DataGrid x:Name="dataGridBottom" Grid.Row="3" Grid.Column="0" Background="#AAFFFFFF" HeadersVisibility="All" Style="{DynamicResource DataGrid}" Padding="5 0 5 0" EnableColumnVirtualization="False" EnableRowVirtualization="False">-->
+        <DataGrid x:Name="dataGridBottom" Grid.Row="3" Grid.Column="0" 
+                  Background="#AAFFFFFF" 
+                  HeadersVisibility="All" 
+                  Padding="5 0 5 0"
+                  Style="{DynamicResource DataGrid}">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <EventSetter Event="SizeChanged" Handler="DataGridBottom_ColumnHeader_SizeChanged"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Resources>
+                <Style x:Name="styleDataGridBottomCell" x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="BottomDataGridCell_PreviewMouseLeftButtonDown"></EventSetter>
+                    <EventSetter Event="PreviewMouseRightButtonDown" Handler="BottomDataGridCell_PreviewMouseLeftButtonDown"></EventSetter>
+                    <EventSetter Event="GotFocus" Handler="BottomDataGridCell_GotFocus"></EventSetter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="#AA0078FF"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}}" Width="40">
+                    <DataGridCheckBoxColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Border Margin="6 0 0 0">
+                                <CheckBox x:Name="cbBottomSelectedAll" IsChecked="False" Checked="cbBottomSelectedAll_Checked" Unchecked="cbBottomSelectedAll_Unchecked" />
+                            </Border>
+                        </DataTemplate>
+                    </DataGridCheckBoxColumn.HeaderTemplate>
+                    <DataGridCheckBoxColumn.ElementStyle>
+                        <Style TargetType="CheckBox">
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                        </Style>
+                    </DataGridCheckBoxColumn.ElementStyle>
+                </DataGridCheckBoxColumn>
+                <!--<DataGridTemplateColumn Header="序号" SortMemberPath="Id" Width="50" MinWidth="10" IsReadOnly="True" Visibility="Collapsed">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGridRow}}, Path=Header}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+                <DataGridTextColumn x:Name="ColumnBottomId" Header="主键" Binding="{Binding Path=Id}" ElementStyle="{DynamicResource DataGridCellCenter_Number}" Visibility="Collapsed"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="ColumnBottomEdit" Header="编辑" Binding="{Binding Path=MZ_IsEdit}" Visibility="Collapsed"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="ColumnBottomNew" Header="增加" Binding="{Binding Path=MZ_IsNew}" Visibility="Collapsed"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border x:Name="borderChooseBottom" Grid.Row="3" Grid.Column="0" Width="10" Height="10" Background="Red" CornerRadius="10" VerticalAlignment="Top" Margin="1" HorizontalAlignment="Left" Visibility="Collapsed"></Border>
+        
+        <!--子表查询栏-->
+        <Grid Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Border x:Name="borderBottomSearch" Padding="8px 5px" Background="#AACCCCCC" CornerRadius="0 0 5 5" Visibility="Collapsed">
+                <StackPanel>
+                    <WrapPanel x:Name="panelSearchBottom" Visibility="Collapsed">
+                        <TextBlock Style="{DynamicResource lblFormTitle}" Width="Auto">搜索</TextBlock>
+                        <TextBox x:Name="txtSeachBottom" Style="{DynamicResource txtRadius}" BorderBrush="#cccccc" Width="150" Height="24"></TextBox>
+                    </WrapPanel>
+                    <TextBlock x:Name="lblSearchBottomExp" TextAlignment="Center" Foreground="Black">...</TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!--子表分页-->
+        <Grid x:Name="gridBottomPage" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 20 0" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10px"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="borderBottomPages" Grid.Row="3" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" CornerRadius="40 0 0 0" Background="#FFFFFF" Padding="20 10 10 0" BorderBrush="White" Visibility="Visible">
+                <WrapPanel x:Name="panelBottomPages" VerticalAlignment="Center" Height="35"></WrapPanel>
+            </Border>
+            <Border x:Name="btnBottomPageExt" Tag="1" Background="#AAFFFFFF" Height="45" Grid.Column="1" Cursor="Hand">
+                <Polygon x:Name="btnBottomPageExtTag" Stretch="Fill" Points="0,3 5,0 5,6" Stroke="Gray" StrokeThickness="0" Width="5" Height="10">
+                    <Polygon.Fill>
+                        <SolidColorBrush Color="Black" Opacity="1"/>
+                    </Polygon.Fill>
+                </Polygon>
+            </Border>
+        </Grid>
+
+        <!--子表预览图片-->
+        <Image x:Name="imgBottomPreview" Grid.Row="3" Grid.Column="0" Tag="0" Width="0" Height="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 0 50" Visibility="Collapsed"></Image>
+
+        <!--列排序提示保存-->
+        <StackPanel x:Name="panelSortCellOrder" Grid.RowSpan="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 0 55" Visibility="Collapsed">
+            <Border Background="#CC333333" CornerRadius="5" Padding="10">
+                <StackPanel>
+                    <TextBlock Foreground="#eee" FontWeight="Bold">温馨提示：</TextBlock>
+                    <TextBlock Foreground="#fff" Margin="0 5 0 10">您当前正在对列进行排序，无法操作开单、添加、修改等。</TextBlock>
+                    <Button x:Name="btnSaveCellOrder" Style="{DynamicResource btnOk}" HorizontalAlignment="Left" Background="Red">保存列排序</Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!--加载数据失败-->
+        <StackPanel x:Name="panelLoadDataError" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="4" Visibility="Collapsed">
+            <Border Width="50" Height="50" BorderBrush="Pink" BorderThickness="1" CornerRadius="50">
+                <Canvas>
+                    <Line X1="15" Y1="15" X2="35" Y2="35" Stroke="red" StrokeThickness="2"></Line>
+                    <Line X1="35" Y1="15" X2="15" Y2="35" Stroke="red" StrokeThickness="2"></Line>
+                </Canvas>
+            </Border>
+            <TextBlock Style="{DynamicResource lblLoadError}">加载数据失败</TextBlock>
+            <Button x:Name="btnReload" Style="{DynamicResource btnAction}" Margin="10">重新加载</Button>
+        </StackPanel>
+
+        <!--没有权限-->
+        <StackPanel x:Name="panelNonAuthority" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="4" Visibility="Collapsed">
+            <Border Width="50" Height="50" BorderBrush="Pink" BorderThickness="1" CornerRadius="50">
+                <Canvas>
+                    <Line X1="15" Y1="15" X2="35" Y2="35" Stroke="red" StrokeThickness="2"></Line>
+                    <Line X1="35" Y1="15" X2="15" Y2="35" Stroke="red" StrokeThickness="2"></Line>
+                </Canvas>
+            </Border>
+            <TextBlock Style="{DynamicResource lblLoadError}">您还未获得权限，请联系管理员！</TextBlock>
+        </StackPanel>
+
+        <!--加载表配置失败-->
+        <StackPanel x:Name="panelLoadTableError" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="4" Visibility="Collapsed">
+            <Border Width="50" Height="50" BorderBrush="Pink" BorderThickness="1" CornerRadius="50">
+                <Canvas>
+                    <Line X1="15" Y1="15" X2="35" Y2="35" Stroke="red" StrokeThickness="2"></Line>
+                    <Line X1="35" Y1="15" X2="15" Y2="35" Stroke="red" StrokeThickness="2"></Line>
+                </Canvas>
+            </Border>
+            <TextBlock x:Name="lblLoadTableErrorText" Style="{DynamicResource lblLoadError}">加载表配置失败！</TextBlock>
+        </StackPanel>
+    </Grid>
+</mz:BaseUserControl>

@@ -1,0 +1,22 @@
+﻿<ws:WsflyWindow x:Class="Wsfly.ERP.Std.Views.Components.ExitTipsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ws="clr-namespace:Wsfly.ERP.Std.Core.Base;assembly=Wsfly.ERP.Std.Core"
+        Title="温馨提示" Height="210" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="40px" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Height="115">
+            <TextBlock x:Name="lblTips" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">是否确定退出程序？</TextBlock>
+            <CheckBox x:Name="cbNotExit" HorizontalAlignment="Center">最小化到托盘</CheckBox>
+        </StackPanel>
+        
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Right" Margin="5">
+            <Button x:Name="btnOK" Width="77"  Style="{DynamicResource ResourceKey=btnWin}">确定</Button>
+            <Button x:Name="btnCancel" Width="77" Margin="5,0" Style="{DynamicResource ResourceKey=btnAction}">取消</Button>
+        </WrapPanel>
+    </Grid>
+</ws:WsflyWindow>

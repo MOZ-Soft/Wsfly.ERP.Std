@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Wsfly.ERP.Std.Views.Parts.PrintTemplateItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="600">
+    <Grid>
+        <Border BorderBrush="#ddd" BorderThickness="0 0 0 1" Padding="0 5">
+            <DockPanel VerticalAlignment="Center">
+                <WrapPanel VerticalAlignment="Center">
+                    <TextBox x:Name="txtName" VerticalAlignment="Center" FontSize="14" Style="{DynamicResource txtText}" MaxLength="20" Width="300">...</TextBox>
+                    <Button x:Name="btnSaveName" Style="{DynamicResource btnMini}" Visibility="Collapsed">保存</Button>
+                    <TextBlock x:Name="lblIsDefault" VerticalAlignment="Center" FontSize="14"></TextBlock>
+                </WrapPanel>
+                <WrapPanel DockPanel.Dock="Right" HorizontalAlignment="Right">
+                    <Button x:Name="btnEdit" Style="{DynamicResource btnMini}">编辑</Button>
+                    <Button x:Name="btnDelete" Style="{DynamicResource btnMini}">删除</Button>
+                    <Button x:Name="btnDefault" Style="{DynamicResource btnMini}">默认</Button>
+                    <Button x:Name="btnPrint" Style="{DynamicResource btnMini}">打印</Button>
+                </WrapPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

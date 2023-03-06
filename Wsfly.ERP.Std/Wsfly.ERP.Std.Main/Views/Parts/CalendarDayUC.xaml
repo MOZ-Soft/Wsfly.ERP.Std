@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Wsfly.ERP.Std.Views.Parts.CalendarDayUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="60">
+    <Grid>
+        <Border x:Name="borderDay" Grid.Row="1" Grid.Column="4" Style="{DynamicResource borderCalendarDay}">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="lblDay" Style="{DynamicResource lblCalendarDayText}">...</TextBlock>
+                <Border x:Name="borderNotes" Width="8" Height="8" CornerRadius="8" Background="Green" Visibility="Hidden"></Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,41 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.Client.PC.Views.Parts.ChooseIconItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.Client.PC.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.Client.PC.AppCode.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="52" d:DesignWidth="52">
+    <UserControl.Resources>
+        <Style x:Key="borderItem" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="BorderBrush" Value="LightGray"></Setter>
+            <Setter Property="Background" Value="#fff"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="CornerRadius" Value="5"></Setter>
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+        </Style>
+        <Style x:Key="borderItem_Choosed" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="50"></Setter>
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="BorderBrush" Value="OrangeRed"></Setter>
+            <Setter Property="Background" Value="#fff"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="CornerRadius" Value="5"></Setter>
+            <Setter Property="Height" Value="50"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="gridMain">
+        <Border x:Name="border" Style="{StaticResource borderItem}">
+            <Image x:Name="imgIcon" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="30" MaxHeight="30"></Image>
+        </Border>
+        <Border Background="#333" Margin="2" Height="14" Opacity="0.5" VerticalAlignment="Bottom" CornerRadius="0 0 5 5"></Border>
+        <StackPanel Margin="2" VerticalAlignment="Bottom" Height="14">
+            <TextBlock x:Name="lblType" Foreground="White" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Grid>
+</mz:BaseUserControl>

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Wsfly.ERP.Std.Views.Controls.DropDownTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="28" d:DesignWidth="300">
+    <Grid x:Name="gridMain">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition x:Name="colClear" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="val" Visibility="Collapsed"></TextBox>
+            <Border BorderThickness="1" BorderBrush="#ccc">
+                <TextBox x:Name="txt" Padding="3 5" Height="Auto" MinWidth="120" Margin="0" BorderThickness="0"></TextBox>
+            </Border>
+            <Button x:Name="btnDropDown" Grid.Column="1" Style="{DynamicResource btnMini}" Margin="0">
+                <Canvas>
+                    <Polygon x:Name="btnPolygon" Points="-5,-2.5 5,-2.5 0,5" Stroke="#333" StrokeThickness="1">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="#333" Opacity="0.8"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Canvas>
+            </Button>
+            <Button x:Name="btnClear" Grid.Column="2" Style="{DynamicResource btnMini}">清空</Button>
+        </Grid>
+        <Popup x:Name="popup" PlacementTarget="{Binding ElementName=txt}" StaysOpen="False">
+            <Border BorderBrush="LightGray" BorderThickness="1" Padding="0" Background="#fff">
+                <StackPanel>
+                    <WrapPanel x:Name="panelPages" Margin="5" Visibility="Collapsed">
+                        <Button x:Name="btnFirst" Style="{DynamicResource btnMini}">首页</Button>
+                        <Button x:Name="btnPrev" Style="{DynamicResource btnMini}">上页</Button>
+                        <Button x:Name="btnNext" Style="{DynamicResource btnMini}">下页</Button>
+                        <Button x:Name="btnLast" Style="{DynamicResource btnMini}">尾页</Button>
+                    </WrapPanel>
+                    <ListView x:Name="listView" BorderThickness="0">
+                        <ListView.View>
+                            <GridView x:Name="gridView">
+                            </GridView>
+                        </ListView.View>
+                    </ListView>                    
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

@@ -1,0 +1,63 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.Parts.ChooseFontIconWin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1000">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Background="#f0f0f0">
+            <WrapPanel VerticalAlignment="Center">
+                <TextBlock Style="{DynamicResource lblFormTitle}" Width="80">搜索：</TextBlock>
+                <TextBox x:Name="txtKeywords" Style="{DynamicResource txt}"></TextBox>
+            </WrapPanel>
+        </DockPanel>
+        
+        <ScrollViewer x:Name="scrollMain" Height="Auto" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" FocusVisualStyle="{x:Null}">
+            <ScrollViewer.Content>
+                <WrapPanel x:Name="panelItems">
+                </WrapPanel>
+            </ScrollViewer.Content>
+        </ScrollViewer>
+
+        <DockPanel Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <WrapPanel Style="{DynamicResource panelFormRow}" VerticalAlignment="Center">
+                    <TextBlock Style="{DynamicResource lblFormTitle}" Width="80">图标：</TextBlock>
+                    <WrapPanel x:Name="panelChooseIcon">
+                    </WrapPanel>
+                </WrapPanel>
+
+                <WrapPanel Grid.Column="1" Style="{DynamicResource panelFormRow}" VerticalAlignment="Center">
+                    <TextBlock Style="{DynamicResource lblFormTitle}" Width="80">颜色：</TextBlock>
+                    <TextBox x:Name="txtColor" Style="{DynamicResource txt}" Width="100">#000000</TextBox>
+                    <WrapPanel x:Name="panelColor" Width="20" Height="20" Background="Black" Margin="10 0"></WrapPanel>
+                </WrapPanel>
+
+                <WrapPanel x:Name="panelColors" Grid.Column="2" Style="{DynamicResource panelFormRow}" VerticalAlignment="Top">
+                </WrapPanel>
+
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="btnOk" Style="{DynamicResource btnOk}">确定</Button>
+                </StackPanel>
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+</mz:BaseUserControl>

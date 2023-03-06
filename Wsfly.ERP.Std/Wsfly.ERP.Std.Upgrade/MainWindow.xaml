@@ -1,0 +1,117 @@
+﻿<Window x:Class="Wsfly.ERP.Std.Upgrade.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wsfly.ERP.Std.Upgrade"
+        mc:Ignorable="d"
+        Title="MZ-ERP Client Upgrading" Height="350" Width="525" Icon="favicon.ico" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Style="{DynamicResource NoBorder_Window}">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="bg" CornerRadius="5" Grid.RowSpan="3"></Border>
+        <Border x:Name="bg2" CornerRadius="5" Grid.RowSpan="3" Opacity="0"></Border>
+
+        <DockPanel Margin="10 0" VerticalAlignment="Center">
+            <TextBlock FontSize="14" Foreground="White" HorizontalAlignment="Center">MOZERP-Std 在线升级</TextBlock>
+        </DockPanel>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="20">
+            <StackPanel>
+                <Canvas x:Name="Canvas" Width="100" Height="100" Visibility="Visible" Opacity="1">
+                    <Path Data="M299.04,399.84 C299.04,399.84 297.76361,398.57453 297.77625,395.21456 297.78758,392.20365 300.35098,388.05547 306.04298,388.05547 311.73498,388.05547 313.84807,391.9991 313.84807,395.17365 313.84807,398.44654 312.96,399.84 312.96,399.84 L312.91847,403.20001 C312.91847,403.20001 315.9064,400.35883 315.9064,395.18183 315.9064,390.00483 311.55957,385.92 306.00457,385.92 300.44957,385.92 295.88681,390.38183 295.88681,395.18183 295.88681,399.98183 298.286,402.48 299.04,403.2 L299.04,399.84 z" Stretch="Fill" Height="88" Width="100.5" Canvas.Left="-0.167" >
+                        <Path.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#20f8ee" Offset="0"></GradientStop>
+                                <GradientStop Color="#145797" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                    </Path>
+                    <Path Data="M307.2,395.76l4.8-4.8v12.96l-1.92,1.2v-9.6l-1.44,1.44L307.2,395.76z" Stretch="Fill" Canvas.Left="53.574" Canvas.Top="21.711" Height="75.039" Width="25.436">
+                        <Path.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#20f8ee" Offset="0"></GradientStop>
+                                <GradientStop Color="#145797" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                    </Path>
+                    <Path Data="M306,396.72l-1.44,1.44l1.44,1.44l1.44-1.44L306,396.72z" Stretch="Fill" Canvas.Left="43.077" Canvas.Top="49.389" Height="14.38" Width="14.38">
+                        <Path.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#20f8ee" Offset="0"></GradientStop>
+                                <GradientStop Color="#145797" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                    </Path>
+                    <Path Data="M304.08,401.76l1.68-1.68l0.24-0.24l1.92,1.92l-0.96,1.92l-0.24,0.24l1.68,1.68 h-4.8l2.16-3.6h-1.68h-0.24L304.08,401.76z" Stretch="Fill" Canvas.Left="37.286" Canvas.Top="65.122" Height="31.56" Width="26.3">
+                        <Path.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#20f8ee" Offset="0"></GradientStop>
+                                <GradientStop Color="#145797" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                    </Path>
+                    <Path Data="M307.2,395.76l4.8-4.8v12.96l-1.92,1.2v-9.6l-1.44,1.44L307.2,395.76z" Stretch="Fill" Canvas.Left="22.186" Canvas.Top="21.98" Height="74.565" Width="25.275" RenderTransformOrigin="0.5,0.5">
+                        <Path.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#20f8ee" Offset="0"></GradientStop>
+                                <GradientStop Color="#145797" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Path.Fill>
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                </Canvas>
+                <Ellipse Width="140" Height="8" VerticalAlignment="Bottom" Opacity="0.5">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </StackPanel>
+            <StackPanel Margin="0 20 0 0" Width="300">
+                <WrapPanel>
+                    <TextBlock>当前版本：</TextBlock>
+                    <TextBlock x:Name="lblVersion">...</TextBlock>
+                </WrapPanel>
+                <WrapPanel Margin="0 10 0 0">
+                    <TextBlock>最新版本：</TextBlock>
+                    <TextBlock x:Name="lblNewVersion">...</TextBlock>
+                </WrapPanel>
+
+                <WrapPanel x:Name="panelWaiting" Margin="0 20 0 0" HorizontalAlignment="Center">
+                    <TextBlock x:Name="lblState">正在获取</TextBlock>
+                    <TextBlock x:Name="lblWaiting">...</TextBlock>
+                </WrapPanel>
+
+                <StackPanel Margin="0 20 0 0" x:Name="panelProgressBar" Visibility="Collapsed">
+                    <DockPanel>
+                        <WrapPanel>
+                            <TextBlock x:Name="lblDownloadSize">0B</TextBlock>
+                            <TextBlock>/</TextBlock>
+                            <TextBlock x:Name="lblTotalSize">0B</TextBlock>
+                        </WrapPanel>
+                        <WrapPanel HorizontalAlignment="Right">
+                            <TextBlock x:Name="lblProgress">0%</TextBlock>
+                            <TextBlock x:Name="lblWaiting2">...</TextBlock>
+                        </WrapPanel>
+                    </DockPanel>
+                    <ProgressBar x:Name="progressBar" Width="300" Height="15"></ProgressBar>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <WrapPanel x:Name="panelItems" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,28 @@
+﻿<mz:BaseWindow x:Class="Wsfly.ERP.Std.Views.Components.TipsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+        Height="150" Width="300" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True">
+    <Border BorderBrush="{DynamicResource ResourceKey=WinBorderBrush}" BorderThickness="5">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <WrapPanel x:Name="pTitle" Background="{DynamicResource ResourceKey=WinBorderBrush}" MouseLeftButtonDown="pTitle_MouseLeftButtonDown">
+                <StackPanel Width="250" HorizontalAlignment="Left" Height="20" Margin="5">
+                    <TextBlock x:Name="txtTitle" Foreground="White" Padding="2">温馨提示：</TextBlock>
+                </StackPanel>
+                <StackPanel Width="20" HorizontalAlignment="Right" Height="20" Margin="0,5">
+                    <StackPanel x:Name="pClose" Width="15" Height="15" Cursor="Hand" Margin="0,2" Background="{DynamicResource ResourceKey=WinBorderBrush}" HorizontalAlignment="Right" MouseLeftButtonDown="pClose_MouseLeftButtonDown" ToolTip="关闭">
+                        <Line X1="3" Y1="3" X2="12" Y2="12" Stroke="#fff"></Line>
+                        <Line X1="3" Y1="0" X2="12" Y2="-10" Stroke="#fff"></Line>
+                    </StackPanel>
+                </StackPanel>
+            </WrapPanel>
+            <WrapPanel x:Name="pMain" Grid.Row="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="txtContent" TextWrapping="Wrap"></TextBlock>
+            </WrapPanel>
+        </Grid>
+    </Border>
+</mz:BaseWindow>

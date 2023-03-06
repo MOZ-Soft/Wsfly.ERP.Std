@@ -1,0 +1,52 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.Parts.HelpUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000" Margin="0">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.RowSpan="2" Background="#fff" Opacity="0.5"></StackPanel>
+
+        <Border BorderThickness="0 0 0 1" BorderBrush="#ddd">
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox x:Name="txtKeywords" Style="{DynamicResource txt}" Width="300"></TextBox>
+                <Button x:Name="btnSearch" Style="{DynamicResource btnOk}">搜索</Button>
+            </WrapPanel>
+        </Border>
+
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="scrollList" FocusVisualStyle="{x:Null}">
+                    <ScrollViewer.Content>
+                        <!--主列表-->
+                        <StackPanel x:Name="panelHelpList" Margin="40 10">
+                        </StackPanel>
+                    </ScrollViewer.Content>
+                </ScrollViewer>
+
+                <!--分页按钮-->
+                <WrapPanel x:Name="panelPages" Grid.Row="1" VerticalAlignment="Center" Margin="40 0"></WrapPanel>
+            </Grid>
+            <StackPanel HorizontalAlignment="Right" Width="250" DockPanel.Dock="Right">
+                <TextBlock Style="{DynamicResource lblTitle}">常见问题</TextBlock>
+                <StackPanel x:Name="panelQuestions" MinHeight="260"></StackPanel>
+
+                <TextBlock Style="{DynamicResource lblTitle}">新手帮助</TextBlock>
+                <StackPanel x:Name="panelNewers"></StackPanel>
+            </StackPanel>
+        </DockPanel>
+
+    </Grid>
+</mz:BaseUserControl>

@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Wsfly.ERP.Std.Views.Parts.FileItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+
+    <Border x:Name="borderMain" BorderBrush="#fff" BorderThickness="1" CornerRadius="3" Background="#AAFFFFFF">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="24px"/>
+            </Grid.RowDefinitions>
+
+            <Border>
+                <Grid>
+                    <TextBlock x:Name="lblExt" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray">...</TextBlock>
+                    <Image x:Name="imgPic" Width="100" Height="100" Visibility="Collapsed"></Image>
+                    <Border x:Name="borderReturn" BorderBrush="#ddd" BorderThickness="2" CornerRadius="100" Width="40" Height="40" Visibility="Collapsed">
+                        <Canvas>
+                            <Line X1="10" Y1="20" X2="24" Y2="8" Stroke="#bbb" StrokeThickness="2"></Line>
+                            <Line X1="10" Y1="19" X2="24" Y2="28" Stroke="#bbb" StrokeThickness="2"></Line>
+                        </Canvas>
+                    </Border>
+                    <Image x:Name="imgDir" Width="48" Height="48" Visibility="Collapsed"></Image>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock x:Name="lblName" TextAlignment="Center">...</TextBlock>
+                <TextBox x:Name="txtName" Visibility="Collapsed" Style="{DynamicResource txtRadius}" MinWidth="0" Width="98" Height="22"></TextBox>
+            </StackPanel>
+
+            <Canvas x:Name="tagChoosed" Grid.RowSpan="2" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0" Background="SkyBlue" Visibility="Collapsed" Opacity="0.7">
+                <Line X1="3" Y1="10" X2="9" Y2="15" Stroke="#fff" StrokeThickness="2"></Line>
+                <Line X1="17" Y1="5" X2="8" Y2="15" Stroke="#fff" StrokeThickness="2"></Line>
+            </Canvas>
+        </Grid>
+    </Border>
+</UserControl>

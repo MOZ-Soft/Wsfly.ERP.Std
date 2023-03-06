@@ -1,0 +1,92 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.MZ.AuthorityUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1000" Margin="0">
+    <Grid x:Name="gridMain" Background="#66FFFFFF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <WrapPanel>
+                <TextBlock Style="{DynamicResource lblTitle}" Grid.RowSpan="2" Padding="10">角色</TextBlock>
+                <Button x:Name="btnReloadRoles" Style="{DynamicResource btnMini}" VerticalAlignment="Center" Margin="10 0 0 0">重新加载</Button>
+            </WrapPanel>
+
+            <ListView x:Name="listRoles" Grid.Row="1" Background="Transparent" BorderThickness="0" AlternationCount="2" ItemContainerStyle="{DynamicResource listViewItem}" VirtualizingStackPanel.IsVirtualizing="False">
+                <ListView.View>
+                    <GridView x:Name="viewRoles">
+                        <GridViewColumn Width="40" HeaderContainerStyle="{DynamicResource listViewHeader}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}}"></CheckBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn HeaderContainerStyle="{DynamicResource listViewHeader}" Width="300">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" Foreground="#333" HorizontalAlignment="Center" VerticalAlignment="Center">角色名称</TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RoleName}" FontSize="14" Foreground="#333"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn HeaderContainerStyle="{DynamicResource listViewHeader}" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{DynamicResource btnMini}" Click="ButtonDelete_Click">删除</Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Border BorderBrush="#ddd" BorderThickness="0 1 0 0" Grid.Row="2" Background="#AAFFFFFF">
+                <WrapPanel VerticalAlignment="Center" Margin="10 0">
+                    <TextBlock VerticalAlignment="Center" FontSize="14" Foreground="#666">添加角色：</TextBlock>
+                    <TextBox x:Name="txtRoleName" Style="{DynamicResource txt}" Width="150" MaxLength="10"></TextBox>
+                    <Button x:Name="btnSaveRole" Style="{DynamicResource btnAction}">添加</Button>
+                </WrapPanel>
+            </Border>
+        </Grid>
+        <GridSplitter Width="5" Background="#AA888888" Cursor="ScrollWE" Grid.Column="0" />
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel>
+                <TextBlock Style="{DynamicResource lblTitle}" Padding="10">权限</TextBlock>
+                <Button x:Name="btnReloadAuthoritys" Style="{DynamicResource btnMini}" VerticalAlignment="Center" Margin="10 0 0 0">重新加载</Button>
+            </WrapPanel>
+
+            <TreeView x:Name="tvAuthoritys" Grid.Row="1" Background="Transparent" BorderThickness="0" FontSize="14" VirtualizingStackPanel.IsVirtualizing="False"></TreeView>
+
+            <Border BorderBrush="#ddd" BorderThickness="0 1 0 0" Grid.Row="2" Background="#AAFFFFFF">
+                <WrapPanel VerticalAlignment="Center" Margin="10 0" HorizontalAlignment="Right">
+                    <TextBlock x:Name="lblRoleAuthorityTips" FontSize="14" VerticalAlignment="Center" Foreground="Gray" Visibility="Collapsed">加载角色权限失败！</TextBlock>
+                    <Button x:Name="btnSaveRoleAuthoritys" Style="{DynamicResource btnOk}">保存更改</Button>
+                </WrapPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</mz:BaseUserControl>

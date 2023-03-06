@@ -1,0 +1,17 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.Controls.AreaUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="400" Margin="0">
+    <Grid x:Name="gridMain">
+        <WrapPanel Height="24">
+            <ComboBox x:Name="ddlProvince" IsEditable="False"></ComboBox>
+            <ComboBox x:Name="ddlCity" IsEditable="False" Margin="5 0"></ComboBox>
+            <TextBox x:Name="txtAddress" Style="{DynamicResource txt}" Width="225" Height="24" Visibility="Collapsed"></TextBox>
+        </WrapPanel>
+    </Grid>
+</mz:BaseUserControl>

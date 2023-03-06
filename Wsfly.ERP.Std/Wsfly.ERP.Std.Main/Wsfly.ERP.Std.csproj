@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\FastReport.OpenSource.2022.3.15\build\FastReport.OpenSource.props" Condition="Exists('..\..\packages\FastReport.OpenSource.2022.3.15\build\FastReport.OpenSource.props')" />
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A7DF5A20-E027-43BA-99AC-8024D47324B4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wsfly.ERP.Std</RootNamespace>
+    <AssemblyName>MOZ-ERP</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Custom</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Portable.BouncyCastle.1.8.9\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FastReport, Version=2022.3.15.0, Culture=neutral, PublicKeyToken=5ceb240df42bf6e8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastReport.OpenSource.2022.3.15\lib\net40\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Compat, Version=2022.3.2.0, Culture=neutral, PublicKeyToken=406e1f4c3c8ef97e, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastReport.Compat.2022.3.2\lib\net40\FastReport.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.OpenSource.Export.PdfSimple, Version=2022.3.15.0, Culture=neutral, PublicKeyToken=b33a9a06fcc00c4c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FastReport.OpenSource.Export.PdfSimple.2022.3.15\lib\net40\FastReport.OpenSource.Export.PdfSimple.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.46.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.11.46\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=6.2.0.78, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AvalonEdit.6.2.0.78\lib\net462\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.3.11, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpZipLib.1.3.3\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks">
+      <HintPath>..\..\_Libs\MahApps.Metro.IconPacks.dll</HintPath>
+    </Reference>
+    <Reference Include="NCalc, Version=1.3.8.0, Culture=neutral, PublicKeyToken=973cde3f1cafed03, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ncalc.1.3.8\lib\NCalc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.5.6\lib\net45\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.5.6\lib\net45\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.5.6\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.6.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.5.6\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Smith.WPF.HtmlEditor">
+      <HintPath>..\..\_Libs\SmithHtmlEditor\Smith.WPF.HtmlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Smith.WPF.HtmlEditor.resources">
+      <HintPath>..\..\_Libs\SmithHtmlEditor\zh-CN\Smith.WPF.HtmlEditor.resources.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\lib\net451\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SQLite.EF6.1.0.116.0\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SQLite.Linq.1.0.116.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.4778.30637, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ThoughtWorks.QRCode.1.1.0\lib\ThoughtWorks.QRCode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppCode\API\APIEncrypt.cs" />
+    <Compile Include="AppCode\API\CallMZAPI.cs" />
+    <Compile Include="AppCode\API\CallMZAPI_Pay.cs" />
+    <Compile Include="AppCode\API\CallMZSPAPI.cs" />
+    <Compile Include="AppCode\API\XTAPI.cs" />
+    <Compile Include="AppCode\Base\BaseUserControl.cs" />
+    <Compile Include="AppCode\Controls\DateTimePicker.cs" />
+    <Compile Include="AppCode\Controls\GifAnimation.cs" />
+    <Compile Include="AppCode\Controls\GifImage.cs" />
+    <Compile Include="AppCode\Converters\BoolConvert.cs" />
+    <Compile Include="AppCode\Converters\CalculationConvert.cs" />
+    <Compile Include="AppCode\Converters\DateTimeConvert.cs" />
+    <Compile Include="AppCode\Converters\DecimalConverter.cs" />
+    <Compile Include="AppCode\Converters\FileConvert.cs" />
+    <Compile Include="AppCode\Converters\GSConvert.cs" />
+    <Compile Include="AppCode\Converters\IconColorConverter.cs" />
+    <Compile Include="AppCode\Converters\IconConverter.cs" />
+    <Compile Include="AppCode\Converters\LevelToMarginConverter.cs" />
+    <Compile Include="AppCode\Converters\StringEllipsisConvert.cs" />
+    <Compile Include="AppCode\Converters\TabConverter.cs" />
+    <Compile Include="AppCode\Converters\VisibilityConvert.cs" />
+    <Compile Include="AppCode\Ctls\FormatedText.cs" />
+    <Compile Include="AppCode\Ctls\FormsWebBrowser.cs" />
+    <Compile Include="AppCode\Ctls\StrokeableLabel.cs" />
+    <Compile Include="AppCode\Dao\Base\Command.cs" />
+    <Compile Include="AppCode\Dao\Base\CommonService.cs" />
+    <Compile Include="AppCode\Dao\Base\Constant.cs" />
+    <Compile Include="AppCode\Dao\Base\DbHelper.cs" />
+    <Compile Include="AppCode\Dao\Base\PagingHandler.cs" />
+    <Compile Include="AppCode\Dao\Base\T-SQLHandler.cs" />
+    <Compile Include="AppCode\Dao\Base\Transform.cs" />
+    <Compile Include="AppCode\Enums\ActionState.cs" />
+    <Compile Include="AppCode\Enums\AlertWindowButton.cs" />
+    <Compile Include="AppCode\Enums\FormTipsType.cs" />
+    <Compile Include="AppCode\Enums\ListActionEnum.cs" />
+    <Compile Include="AppCode\Enums\ListAction.cs" />
+    <Compile Include="AppCode\Enums\NoteEnums.cs" />
+    <Compile Include="AppCode\Enums\StateEnums.cs" />
+    <Compile Include="AppCode\Enums\ViewType.cs" />
+    <Compile Include="AppCode\Enums\WorkFeedbackEnums.cs" />
+    <Compile Include="AppCode\Enums\WorkPlanEnums.cs" />
+    <Compile Include="AppCode\Enums\XMZTEnums.cs" />
+    <Compile Include="AppCode\Extensions\TextBoxExt.cs" />
+    <Compile Include="AppCode\Extensions\DataGridCellExt.cs" />
+    <Compile Include="AppCode\Exts\DataGridPlus.cs" />
+    <Compile Include="AppCode\Exts\VisualTreePlus.cs" />
+    <Compile Include="AppCode\Handler\FlashWindowHandler.cs" />
+    <Compile Include="AppCode\Handler\CNString.cs" />
+    <Compile Include="AppCode\Handler\ENString.cs" />
+    <Compile Include="AppCode\Handler\ErrorHandler.cs" />
+    <Compile Include="AppCode\Handler\HtmlPrintHandler.cs" />
+    <Compile Include="AppCode\Handler\ImageBrushHandler.cs" />
+    <Compile Include="AppCode\Handler\NPOIHandler.cs" />
+    <Compile Include="AppCode\Handler\PCHandler.cs" />
+    <Compile Include="AppCode\Handler\PingHandler.cs" />
+    <Compile Include="AppCode\Handler\PrintHandler.cs" />
+    <Compile Include="AppCode\Handler\UpgradeHandler.cs" />
+    <Compile Include="AppCode\Inc\AppAlert.cs" />
+    <Compile Include="AppCode\Inc\AppData.cs" />
+    <Compile Include="AppCode\Inc\AppModules.cs" />
+    <Compile Include="AppCode\Inc\AppTimer.cs" />
+    <Compile Include="AppCode\Inc\CRC.cs" />
+    <Compile Include="AppCode\Inc\CashierConfig.cs" />
+    <Compile Include="AppCode\Inc\LocalConfig.cs" />
+    <Compile Include="AppCode\KeyboardHook\Hocy_Hook.cs" />
+    <Compile Include="AppCode\KeyboardHook\public_variable.cs" />
+    <Compile Include="AppCode\KeyboardHook\WIN32API.cs" />
+    <Compile Include="AppCode\Models\AuthorityItem.cs" />
+    <Compile Include="AppCode\Models\CopyDataInfo.cs" />
+    <Compile Include="AppCode\Models\DirItemInfo.cs" />
+    <Compile Include="AppCode\Models\DropDownInfo.cs" />
+    <Compile Include="AppCode\Models\FileActionInfo.cs" />
+    <Compile Include="AppCode\Models\FileItemInfo.cs" />
+    <Compile Include="AppCode\Models\JsonResult.cs" />
+    <Compile Include="AppCode\Models\NeedSaveRow.cs" />
+    <Compile Include="AppCode\Models\NotCheckPassRow2.cs" />
+    <Compile Include="AppCode\Models\NotCheckPassRow.cs" />
+    <Compile Include="AppCode\Models\PopWinParam.cs" />
+    <Compile Include="AppCode\Models\PostParamInfo.cs" />
+    <Compile Include="AppCode\Models\TabInfo.cs" />
+    <Compile Include="AppCode\Models\UpgradeFilterConfig.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\ActivateUserWindow.xaml.cs">
+      <DependentUpon>ActivateUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\AlertWindow.xaml.cs">
+      <DependentUpon>AlertWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\PdfiumViewerWindow.xaml.cs">
+      <DependentUpon>PdfiumViewerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\WaitingUC.xaml.cs">
+      <DependentUpon>WaitingUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\XMLEditorUC.xaml.cs">
+      <DependentUpon>XMLEditorUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\ServiceUC.xaml.cs">
+      <DependentUpon>ServiceUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\RegisterUC.xaml.cs">
+      <DependentUpon>RegisterUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ScheduleItemUC.xaml.cs">
+      <DependentUpon>ScheduleItemUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ScheduleUC.xaml.cs">
+      <DependentUpon>ScheduleUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\SubNavItemUC.xaml.cs">
+      <DependentUpon>SubNavItemUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\BrowserUC.xaml.cs">
+      <DependentUpon>BrowserUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\BrowserWebKitUC.xaml.cs">
+      <DependentUpon>BrowserWebKitUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\CalendarDayUC.xaml.cs">
+      <DependentUpon>CalendarDayUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\CalendarUC.xaml.cs">
+      <DependentUpon>CalendarUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ChooseFontIconWin.xaml.cs">
+      <DependentUpon>ChooseFontIconWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\DocumentShowListUC.xaml.cs">
+      <DependentUpon>DocumentShowListUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\EditUC.xaml.cs">
+      <DependentUpon>EditUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ProgresBarUC.xaml.cs">
+      <DependentUpon>ProgresBarUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\PlugInsUC.xaml.cs">
+      <DependentUpon>PlugInsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\QuickBuildTableUC.xaml.cs">
+      <DependentUpon>QuickBuildTableUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\QuickConfigsUC.xaml.cs">
+      <DependentUpon>QuickConfigsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\RoleUC.xaml.cs">
+      <DependentUpon>RoleUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\AreaUC.xaml.cs">
+      <DependentUpon>AreaUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\BtnNavItem.xaml.cs">
+      <DependentUpon>BtnNavItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\DocumentDetailUC.xaml.cs">
+      <DependentUpon>DocumentDetailUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\ExitTipsWindow.xaml.cs">
+      <DependentUpon>ExitTipsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\FormTipsView.xaml.cs">
+      <DependentUpon>FormTipsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\ImageCutorWindow.xaml.cs">
+      <DependentUpon>ImageCutorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\PageWindow.xaml.cs">
+      <DependentUpon>PageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\PictureWindow.xaml.cs">
+      <DependentUpon>PictureWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\PopWindow.xaml.cs">
+      <DependentUpon>PopWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\PrintWindow.xaml.cs">
+      <DependentUpon>PrintWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Components\TipsWindow.xaml.cs">
+      <DependentUpon>TipsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\AccountUC.xaml.cs">
+      <DependentUpon>AccountUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\AuthorityUC.xaml.cs">
+      <DependentUpon>AuthorityUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\ExecSQLUC.xaml.cs">
+      <DependentUpon>ExecSQLUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\GetPwdUC.xaml.cs">
+      <DependentUpon>GetPwdUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\HelpUC.xaml.cs">
+      <DependentUpon>HelpUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\IndexUC.xaml.cs">
+      <DependentUpon>IndexUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\ListUC.xaml.cs">
+      <DependentUpon>ListUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\LoginUC.xaml.cs">
+      <DependentUpon>LoginUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\DropDownTable.xaml.cs">
+      <DependentUpon>DropDownTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\EditFullTextUC.xaml.cs">
+      <DependentUpon>EditFullTextUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\EditPopTextUC.xaml.cs">
+      <DependentUpon>EditPopTextUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\FileItemUC.xaml.cs">
+      <DependentUpon>FileItemUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\HelpDetailUC.xaml.cs">
+      <DependentUpon>HelpDetailUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\SettingUC.xaml.cs">
+      <DependentUpon>SettingUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\SubNavsUC.xaml.cs">
+      <DependentUpon>SubNavsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MZ\SysSettingsUC.xaml.cs">
+      <DependentUpon>SysSettingsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\BuildProcWin.xaml.cs">
+      <DependentUpon>BuildProcWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\FileManagerUC.xaml.cs">
+      <DependentUpon>FileManagerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\HTMLPrintUC.xaml.cs">
+      <DependentUpon>HTMLPrintUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ImportDataChooseUC.xaml.cs">
+      <DependentUpon>ImportDataChooseUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ImportDataUC.xaml.cs">
+      <DependentUpon>ImportDataUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\PrintTemplateItemUC.xaml.cs">
+      <DependentUpon>PrintTemplateItemUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\PrintTemplateListUC.xaml.cs">
+      <DependentUpon>PrintTemplateListUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\QuerySettingUC.xaml.cs">
+      <DependentUpon>QuerySettingUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ShowPopFullTextUC.xaml.cs">
+      <DependentUpon>ShowPopFullTextUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ShowPopTextUC.xaml.cs">
+      <DependentUpon>ShowPopTextUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfRichText.Ex\AttachedProperties\RichTextboxAssistant.cs" />
+    <Compile Include="WpfRichText.Ex\Commands\CommandReference.cs" />
+    <Compile Include="WpfRichText.Ex\Commands\DelegateCommand.cs" />
+    <Compile Include="WpfRichText.Ex\Controls\RichTextEditor.xaml.cs">
+      <DependentUpon>RichTextEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlCssParser.cs" />
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlFromXamlConverter.cs" />
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlLexicalAnalyzer.cs" />
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlParser.cs" />
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlSchema.cs" />
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlTokenType.cs" />
+    <Compile Include="WpfRichText.Ex\XamlToHtmlParser\HtmlToXamlConverter.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppCode\Base\BaseWindow.cs" />
+    <Compile Include="AppCode\Inc\AppConfig.cs" />
+    <Compile Include="AppCode\Inc\AppGlobal.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\DefaultStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollViewerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\ActivateUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\AlertWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\PdfiumViewerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\WaitingUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\XMLEditorUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MZ\ServiceUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MZ\RegisterUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\ScheduleItemUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\ScheduleUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\SubNavItemUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\BrowserUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\BrowserWebKitUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\CalendarDayUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\CalendarUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\ChooseFontIconWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\DocumentShowListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\EditUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ProgresBarUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\PlugInsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\QuickBuildTableUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\QuickConfigsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\RoleUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\AreaUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\BtnNavItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\DocumentDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\ExitTipsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\FormTipsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\ImageCutorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\PageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\PictureWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\PopWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Components\PrintWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Components\TipsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MZ\AccountUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\AuthorityUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\ExecSQLUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\GetPwdUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\HelpUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home\IndexUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home\ListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Home\LoginUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\DropDownTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\EditFullTextUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\EditPopTextUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\FileItemUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\HelpDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\SettingUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\SubNavsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MZ\SysSettingsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\BuildProcWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\FileManagerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\HTMLPrintUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\ImportDataChooseUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\ImportDataUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\PrintTemplateItemUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\PrintTemplateListUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\QuerySettingUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\ShowPopFullTextUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\ShowPopTextUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WpfRichText.Ex\Controls\RichTextEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="AppData\Wsfly.DC.ERP.db" />
+    <None Include="Cnf\Wsfly.App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Cnf\Wsfly.WCFService.config" />
+    <None Include="Design\projectGuides.guides" />
+    <None Include="DonotUpgrade.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.eot" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.ttf" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.woff" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.eot" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.ttf" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.woff" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.eot" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.ttf" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.woff" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.eot" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.ttf" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.woff" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\Symbola.eot" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\Symbola.otf" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\Symbola.ttf" />
+    <None Include="Plug-In\UMEditor\third-party\mathquill\font\Symbola.woff" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppCode\Engine\" />
+    <Folder Include="Views\Independents\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wsfly.ERP.Std.Core\Wsfly.ERP.Std.Core.csproj">
+      <Project>{5461afe7-f2e4-44e3-b650-c07ab794d6bd}</Project>
+      <Name>Wsfly.ERP.Std.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wsfly.ERP.Std.Ctls\PdfiumViewer\PdfiumViewer.csproj">
+      <Project>{438914b6-5d1c-482c-b942-5c0e057eef6f}</Project>
+      <Name>PdfiumViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wsfly.ERP.Std.Ctls\SmithHtmlEditor\SmithHtmlEditor.csproj">
+      <Project>{84badda1-ab3a-4064-b87e-178d7446901d}</Project>
+      <Name>SmithHtmlEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wsfly.ERP.Std.Service\Wsfly.ERP.Std.Service.csproj">
+      <Project>{1cd186b9-0948-4f1a-a979-f95aa37e0bbb}</Project>
+      <Name>Wsfly.ERP.Std.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WpfRichText.Ex\Controls\Images\charactergrowfont.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\charactershrinkfont.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\editcopy.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\editcut.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\editpaste.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\editredo.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\editundo.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\fileopen.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\filesave.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\listbullets.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\listnumbering.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\paragraphcenterjustify.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\paragraphdecreaseindentation.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\paragraphfulljustify.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\paragraphincreaseindentation.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\paragraphleftjustify.png" />
+    <Resource Include="WpfRichText.Ex\Controls\Images\paragraphrightjustify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_Document\C# DataTable 公式.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="deskico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="favicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WpfRichText.Ex\Controls\Images\uploadimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pdfium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Plug-In\UMEditor\browser.html" />
+    <Content Include="Plug-In\UMEditor\demo.html" />
+    <Content Include="Plug-In\UMEditor\dialogs\emotion\emotion.css" />
+    <Content Include="Plug-In\UMEditor\dialogs\emotion\emotion.js" />
+    <Resource Include="smithhtmleditor.config.xml" />
+    <None Include="Resources\Tips.Waiting.gif" />
+    <None Include="Resources\Tips.Warning.png" />
+    <None Include="Resources\Tips.Error.png" />
+    <None Include="Resources\Tips.Info.png" />
+    <None Include="Resources\Tips.Right.png" />
+    <None Include="Resources\bg.jpg" />
+    <None Include="Resources\tag.Dir.png" />
+    <None Include="Resources\favicon.ico" />
+    <None Include="Resources\notify.ico" />
+    <None Include="Resources\deskico.ico" />
+    <Content Include="smithhtmleditor.stylesheet.css" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\0.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\bface.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\cface.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\fface.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\jxface2.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\tface.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\wface.gif" />
+    <Resource Include="Plug-In\UMEditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Plug-In\UMEditor\dialogs\formula\formula.css" />
+    <Content Include="Plug-In\UMEditor\dialogs\formula\formula.html" />
+    <Content Include="Plug-In\UMEditor\dialogs\formula\formula.js" />
+    <Resource Include="Plug-In\UMEditor\dialogs\formula\images\formula.png" />
+    <Content Include="Plug-In\UMEditor\dialogs\image\image.css" />
+    <Content Include="Plug-In\UMEditor\dialogs\image\image.js" />
+    <Resource Include="Plug-In\UMEditor\dialogs\image\images\close.png" />
+    <Resource Include="Plug-In\UMEditor\dialogs\image\images\upload1.png" />
+    <Resource Include="Plug-In\UMEditor\dialogs\image\images\upload2.png" />
+    <Content Include="Plug-In\UMEditor\dialogs\link\link.js" />
+    <Content Include="Plug-In\UMEditor\dialogs\map\map.html" />
+    <Content Include="Plug-In\UMEditor\dialogs\map\map.js" />
+    <Resource Include="Plug-In\UMEditor\dialogs\video\images\center_focus.jpg" />
+    <Resource Include="Plug-In\UMEditor\dialogs\video\images\left_focus.jpg" />
+    <Resource Include="Plug-In\UMEditor\dialogs\video\images\none_focus.jpg" />
+    <Resource Include="Plug-In\UMEditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Plug-In\UMEditor\dialogs\video\video.css" />
+    <Content Include="Plug-In\UMEditor\dialogs\video\video.js" />
+    <Content Include="Plug-In\UMEditor\index.html" />
+    <Content Include="Plug-In\UMEditor\lang\en\en.js" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\addimage.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\alldeletebtnupskin.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\background.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\button.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\copy.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\deletedisable.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\deleteenable.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\imglabel.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\listbackground.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\localimage.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\music.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\rotateleftdisable.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\rotateleftenable.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\rotaterightdisable.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\rotaterightenable.png" />
+    <Resource Include="Plug-In\UMEditor\lang\en\images\upload.png" />
+    <Resource Include="Plug-In\UMEditor\lang\zh-cn\images\copy.png" />
+    <Resource Include="Plug-In\UMEditor\lang\zh-cn\images\imglabel.png" />
+    <Resource Include="Plug-In\UMEditor\lang\zh-cn\images\localimage.png" />
+    <Resource Include="Plug-In\UMEditor\lang\zh-cn\images\music.png" />
+    <Resource Include="Plug-In\UMEditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Plug-In\UMEditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Plug-In\UMEditor\themes\default\css\umeditor.css" />
+    <Content Include="Plug-In\UMEditor\themes\default\css\umeditor.min.css" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\caret.png" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\close.png" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\icons.gif" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\icons.png" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\ok.gif" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\pop-bg.png" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\spacer.gif" />
+    <Resource Include="Plug-In\UMEditor\themes\default\images\videologo.gif" />
+    <Content Include="Plug-In\UMEditor\third-party\jquery.min.js" />
+    <Resource Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\STIXFontLicense2010.txt" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.svg" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.svg" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.svg" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.svg" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\font\Symbola.svg" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\mathquill.css" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\mathquill.js" />
+    <Content Include="Plug-In\UMEditor\third-party\mathquill\mathquill.min.js" />
+    <Content Include="Plug-In\UMEditor\umeditor.config.js" />
+    <Content Include="Plug-In\UMEditor\umeditor.js" />
+    <Content Include="Plug-In\UMEditor\umeditor.min.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\..\packages\FastReport.OpenSource.2022.3.15\build\FastReport.OpenSource.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\FastReport.OpenSource.2022.3.15\build\FastReport.OpenSource.props'))" />
+  </Target>
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net451\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

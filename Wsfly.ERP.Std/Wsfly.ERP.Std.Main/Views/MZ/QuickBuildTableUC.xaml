@@ -1,0 +1,159 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.MZ.QuickBuildTableUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             xmlns:ctls="clr-namespace:Wsfly.ERP.Std.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800" Margin="0">
+    <Border Background="#AAFFFFFF" Padding="10">
+        <Grid x:Name="gridMain">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel x:Name="panelTabHeaders" VerticalAlignment="Center">
+                <Button Tag="panelZCSB" Style="{DynamicResource btn}" Background="Black" Foreground="White">主从双表</Button>
+                <Button Tag="panelSBJG" Style="{DynamicResource btn}">三表结构</Button>
+            </WrapPanel>
+
+            <ScrollViewer x:Name="scrollMain" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" FocusVisualStyle="{x:Null}">
+                <ScrollViewer.Content>
+                    <StackPanel x:Name="panelTabContents">
+
+                        <WrapPanel Style="{DynamicResource panelFormRow}">
+                            <TextBlock Style="{DynamicResource lblFormTitle}">中文名称：</TextBlock>
+                            <TextBox x:Name="txtCnName" Style="{DynamicResource txt}"></TextBox>
+                        </WrapPanel>
+                        <WrapPanel Style="{DynamicResource panelFormRow}">
+                            <TextBlock Style="{DynamicResource lblFormTitle}">英文名称：</TextBlock>
+                            <TextBox x:Name="txtEnName" Style="{DynamicResource txt}"></TextBox>
+                        </WrapPanel>
+
+                        <!--主从双表 BEGIN-->
+                        <StackPanel x:Name="panelZCSB">
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">主单客户引用：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlZCZDKHGL" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlZCZDKHGLBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">明细商品引用：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlZCMXSPGL" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlZCMXSPGLBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">库存表：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlZCMXKCB" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlZCMXKCBBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">应收选项：</TextBlock>
+                                <CheckBox x:Name="cbZCKDAddYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单加应收</CheckBox>
+                                <CheckBox x:Name="cbZCKDReduceYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单减应收</CheckBox>
+                                <CheckBox x:Name="cbZCSHAddYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核加应收</CheckBox>
+                                <CheckBox x:Name="cbZCSHReduceYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核减应收</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">应付选项：</TextBlock>
+                                <CheckBox x:Name="cbZCKDAddYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单加应付</CheckBox>
+                                <CheckBox x:Name="cbZCKDReduceYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单减应付</CheckBox>
+                                <CheckBox x:Name="cbZCSHAddYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核加应付</CheckBox>
+                                <CheckBox x:Name="cbZCSHReduceYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核减应付</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">库存选项：</TextBlock>
+                                <CheckBox x:Name="cbZCKDAddKC" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">开单加库存</CheckBox>
+                                <CheckBox x:Name="cbZCKDReduceKC" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单减库存</CheckBox>
+                                <CheckBox x:Name="cbZCSHAddKC" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核加库存</CheckBox>
+                                <CheckBox x:Name="cbZCSHReduceKC" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核减库存</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">生成选项：</TextBlock>
+                                <CheckBox x:Name="cbZCBuildZB" IsChecked="True" IsEnabled="False" Margin="0 0 20 0">主表</CheckBox>
+                                <CheckBox x:Name="cbZCBuildCB" IsChecked="True" IsEnabled="False" Margin="0 0 20 0">从表</CheckBox>
+                                <CheckBox x:Name="cbZCBuildZCBB" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">明细报表</CheckBox>
+                                <CheckBox x:Name="cbZCBuildYYBB" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">引用报表</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">其它选项：</TextBlock>
+                                <CheckBox x:Name="cbZCAutoAudit" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">自动审核</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}" Margin="0 30 0 0">
+                                <TextBlock Style="{DynamicResource lblFormTitle}"></TextBlock>
+                                <Button x:Name="btnZCBuild" Style="{DynamicResource btnOk}">立即生成-主从双表</Button>
+                            </WrapPanel>
+                        </StackPanel>
+                        <!--主从双表 END-->
+
+                        <!--三表结构 BEGIN-->
+                        <StackPanel x:Name="panelSBJG" Visibility="Collapsed">
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">主单客户引用：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlSBZDKHGL" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlSBZDKHGLBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">明细商品引用：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlSBMXSPGL" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlSBMXSPGLBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">扩展商品引用：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlSBKZSPGL" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlSBKZSPGLBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">库存表：</TextBlock>
+                                <ctls:DropDownTable x:Name="ddlSBMXKCB" Width="200" ShowCellName="CnName"></ctls:DropDownTable>
+                                <TextBlock x:Name="ddlSBMXKCBBM" Style="{DynamicResource lblFormTips}"></TextBlock>
+                            </WrapPanel>
+
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">应收选项：</TextBlock>
+                                <CheckBox x:Name="cbSBKDAddYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单加应收</CheckBox>
+                                <CheckBox x:Name="cbSBKDReduceYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单减应收</CheckBox>
+                                <CheckBox x:Name="cbSBSHAddYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核加应收</CheckBox>
+                                <CheckBox x:Name="cbSBSHReduceYS" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核减应收</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">应付选项：</TextBlock>
+                                <CheckBox x:Name="cbSBKDAddYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单加应付</CheckBox>
+                                <CheckBox x:Name="cbSBKDReduceYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单减应付</CheckBox>
+                                <CheckBox x:Name="cbSBSHAddYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核加应付</CheckBox>
+                                <CheckBox x:Name="cbSBSHReduceYF" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核减应付</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">库存选项：</TextBlock>
+                                <CheckBox x:Name="cbSBKDAddKC" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">开单加库存</CheckBox>
+                                <CheckBox x:Name="cbSBKDReduceKC" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">开单减库存</CheckBox>
+                                <CheckBox x:Name="cbSBSHAddKC" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核加库存</CheckBox>
+                                <CheckBox x:Name="cbSBSHReduceKC" IsChecked="False" IsEnabled="True" Margin="0 0 20 0">审核减库存</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">生成选项：</TextBlock>
+                                <CheckBox x:Name="cbSBBuildZB" IsChecked="True" IsEnabled="False" Margin="0 0 20 0">主表</CheckBox>
+                                <CheckBox x:Name="cbSBBuildCB" IsChecked="True" IsEnabled="False" Margin="0 0 20 0">从表</CheckBox>
+                                <CheckBox x:Name="cbSBBuildKZB" IsChecked="True" IsEnabled="False" Margin="0 0 20 0">扩展表</CheckBox>
+                                <CheckBox x:Name="cbSBBuildZCBB" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">明细报表</CheckBox>
+                                <CheckBox x:Name="cbSBBuildYYBB" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">引用报表</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}">
+                                <TextBlock Style="{DynamicResource lblFormTitle}">其它选项：</TextBlock>
+                                <CheckBox x:Name="cbSBAutoAudit" IsChecked="True" IsEnabled="True" Margin="0 0 20 0">自动审核</CheckBox>
+                            </WrapPanel>
+                            <WrapPanel Style="{DynamicResource panelFormRow}" Margin="0 30 0 0">
+                                <TextBlock Style="{DynamicResource lblFormTitle}"></TextBlock>
+                                <Button x:Name="btnSBBuild" Style="{DynamicResource btnOk}">立即生成-三表结构</Button>
+                            </WrapPanel>
+                        </StackPanel>
+                        <!--三表结构 END-->
+                    </StackPanel>
+                </ScrollViewer.Content>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</mz:BaseUserControl>

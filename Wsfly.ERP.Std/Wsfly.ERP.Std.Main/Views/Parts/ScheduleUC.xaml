@@ -1,0 +1,115 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.Parts.ScheduleUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             xmlns:ctls="clr-namespace:Wsfly.ERP.Std.Views.Controls"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1400">
+    <Grid x:Name="gridMain">
+        <Border Background="#AAFFFFFF" CornerRadius="10" BorderThickness="1" BorderBrush="#55aaaaaa">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="440"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+
+                <!--计划统计 BEGIN-->
+                <Border Grid.Column="0" Background="#55ffffff" CornerRadius="10" Margin="10 10 0 10">
+                    <StackPanel>
+
+                        <Border Height="30">
+                            <TextBlock x:Name="lblTJYear" Style="{DynamicResource lblSubTitle}" VerticalAlignment="Center" TextAlignment="Center">年统计</TextBlock>
+                        </Border>
+                        <DockPanel Margin="0 10 " HorizontalAlignment="Center">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock HorizontalAlignment="Center" Foreground="Gray" FontWeight="Bold">计划总数</TextBlock>
+                                <TextBlock x:Name="lblJHSL" HorizontalAlignment="Center" FontSize="24" Margin="0 20 0 0" Foreground="#0090ff" ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="10 0 0 0" HorizontalAlignment="Right">
+                                <TextBlock HorizontalAlignment="Center" Foreground="Gray">进行中</TextBlock>
+                                <TextBlock x:Name="lblJHJXZ" HorizontalAlignment="Center" Foreground="Green" FontSize="16"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Foreground="Gray" Margin="0 10 0 0">已完成</TextBlock>
+                                <TextBlock x:Name="lblJHYWC" HorizontalAlignment="Center" Foreground="Gray" FontSize="16"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Foreground="Gray" Margin="0 10 0 0">已取消</TextBlock>
+                                <TextBlock x:Name="lblJHYQX" HorizontalAlignment="Center" Foreground="Gray" FontSize="16"></TextBlock>
+                                <TextBlock HorizontalAlignment="Center" Foreground="Gray" Margin="0 10 0 0">异　常</TextBlock>
+                                <TextBlock x:Name="lblJHYC" HorizontalAlignment="Center" Foreground="Red" FontSize="16"></TextBlock>
+                            </StackPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+                <!--计划统计 END-->
+
+                <!--日历 BEIGN-->
+                <StackPanel Margin="10" Grid.Column="1">
+                    <DockPanel VerticalAlignment="Center" Height="30">
+                        <TextBlock x:Name="lblYear" FontSize="18" Foreground="#aaa" VerticalAlignment="Center">2016年</TextBlock>
+                        <TextBlock x:Name="lblMonth" FontSize="18" Foreground="OrangeRed" VerticalAlignment="Center" Margin="10 0 0 0">12月</TextBlock>
+                        <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button x:Name="btnToday" Style="{DynamicResource btnMini}" HorizontalAlignment="Right">今天</Button>
+                            <Button x:Name="btnPrevMonth" Style="{DynamicResource btnMini}" HorizontalAlignment="Right" Margin="5 0 0 0">上一月</Button>
+                            <Button x:Name="btnNextMonth" Style="{DynamicResource btnMini}" HorizontalAlignment="Right" Margin="5 0 0 0">下一月</Button>
+                        </WrapPanel>
+                    </DockPanel>
+                    <StackPanel x:Name="panelDate">
+                        <local:CalendarUC x:Name="ucCalendar" Width="420" Height="420"></local:CalendarUC>
+                    </StackPanel>
+                </StackPanel>
+                <!--日历 END-->
+            
+                <!--计划 BEIGN-->
+                <StackPanel Grid.Column="2" Margin="10 10 0 0">
+                    <DockPanel Height="30">
+                        <TextBlock x:Name="lblScheduleTitle_List" FontSize="18" Foreground="#aaa" Margin="0 3 10 0">工作计划</TextBlock>
+                        <CheckBox x:Name="cbShowYQX" Foreground="Gray" FontSize="12" Margin="20 0">显示已取消</CheckBox>
+                        
+                        <WrapPanel HorizontalAlignment="Right">
+                            <Button x:Name="btnAddWorkplan" Style="{DynamicResource btnNull}" Cursor="Hand" VerticalAlignment="Center">
+                                <iconPacks:PackIconMaterial Kind="Plus" Width="18" Height="18" Margin="10 0 0 0" Cursor="Hand" Background="#00ffffff"></iconPacks:PackIconMaterial>
+                            </Button>
+                        </WrapPanel>
+                    </DockPanel>
+                    <ScrollViewer x:Name="scrollWorkplans" Height="410" Margin="0 10 0 0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" FocusVisualStyle="{x:Null}">
+                        <ScrollViewer.Content>
+                            <StackPanel x:Name="panelWorkplans" Margin="0" FocusVisualStyle="{x:Null}"></StackPanel>
+                        </ScrollViewer.Content>
+                    </ScrollViewer>
+                </StackPanel>
+                <!--计划 END-->
+            
+                <!--滚动条 BEGIN-->
+                <Border x:Name="borderScrollOuter" Width="8" Height="410" Grid.Column="3" CornerRadius="5" Background="#FFFFFF" Margin="3 50 3 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="borderScrollInner" Height="100" Margin="1" CornerRadius="5" Background="#55888888" VerticalAlignment="top"></Border>
+                </Border>
+                <!--滚动条 END-->
+
+                <!--添加计划 BEGIN-->
+                <Border x:Name="borderNewWork" Grid.Column="2" Grid.ColumnSpan="2" Margin="10" Background="#FFFFFF" CornerRadius="5" Visibility="Collapsed" Padding="10">
+                    <StackPanel>
+                        <TextBlock x:Name="lblScheduleTitle_Edit" Style="{DynamicResource lblTitle}" HorizontalAlignment="Center">添加计划</TextBlock>
+                        <WrapPanel Style="{DynamicResource panelFormRow}">
+                            <TextBlock Style="{DynamicResource lblFormTips}" Width="80" TextAlignment="Right">计划内容：</TextBlock>
+                            <TextBox x:Name="txtContent" Width="390" Height="160" Style="{DynamicResource txt}" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" VerticalContentAlignment="Top" VerticalScrollBarVisibility="Visible"></TextBox>
+                        </WrapPanel>
+                        <WrapPanel x:Name="panelWorkAttachment" Style="{DynamicResource panelFormRow}">
+                            <TextBlock Style="{DynamicResource lblFormTips}" Width="80" TextAlignment="Right">计划附件：</TextBlock>
+                            <Button x:Name="btnChooseFile" Style="{DynamicResource btnAction}" Width="80">选择...</Button>
+                            <TextBlock x:Name="lblWorkAttachment" Style="{DynamicResource lblFormContent}" MinWidth="0" Cursor="Hand"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel Margin="0 20 0 0" HorizontalAlignment="Center">
+                            <Button x:Name="btnSave" Style="{DynamicResource btn}">保存</Button>
+                            <Button x:Name="btnCancel" Style="{DynamicResource btn}">取消</Button>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+                <!--添加计划 END-->
+            </Grid>
+        </Border>
+    </Grid>
+</mz:BaseUserControl>

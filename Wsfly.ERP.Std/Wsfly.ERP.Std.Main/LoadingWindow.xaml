@@ -1,0 +1,92 @@
+﻿<mz:BaseWindow x:Class="Wsfly.ERP.Std.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wsfly.ERP.Std"
+        xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+        mc:Ignorable="d" Title="MZ-ERP Starting" Height="300" Width="400" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" AllowsTransparency="True">
+    <Border x:Name="borderMain" BorderBrush="Transparent" BorderThickness="0">
+        <StackPanel>
+            <Grid x:Name="gridMain">
+                <StackPanel x:Name="panelLogo" Margin="0,25,0,0">
+                    <Canvas x:Name="Canvas" Width="200" Height="200" Visibility="Visible" Opacity="1">
+                        <Canvas.Effect>
+                            <DropShadowEffect Color="White" BlurRadius="1" ShadowDepth="1"/>
+                        </Canvas.Effect>
+                        <Path Data="M299.04,399.84 C299.04,399.84 297.84859,398.57249 297.84859,395.21249 297.84859,391.85249 300.67494,387.83753 305.87875,387.83753 311.09918,387.83753 313.96802,391.78733 313.94216,395.22888 313.91722,398.54762 312.96,399.84 312.96,399.84 L312.96,402.96 C312.96,402.96 315.87073,400.48785 315.87073,395.31085 315.87073,390.13385 311.46699,385.90362 305.91199,385.90362 300.35699,385.90362 295.89509,390.19747 295.89509,395.28627 295.89509,400.57167 298.25838,402.24444 299.01238,402.96444 L299.04,399.84 z" Stretch="Fill" Height="173.501" Width="200.25" Canvas.Top="-0.167" Canvas.Left="-0.25" >
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00c5ff" Offset="0"></GradientStop>
+                                    <GradientStop Color="#0081b7" Offset="1"></GradientStop>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Data="M307.2,395.76l4.8-4.8v12.96l-1.92,1.2v-9.6l-1.44,1.44L307.2,395.76z" Stretch="Fill" Canvas.Left="105.168" Canvas.Top="44.498" Height="149.847" Width="50.794">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00c5ff" Offset="0"></GradientStop>
+                                    <GradientStop Color="#0081b7" Offset="1"></GradientStop>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Data="M306,396.72l-1.44,1.44l1.44,1.44l1.44-1.44L306,396.72z" Stretch="Fill" Canvas.Left="85.868" Canvas.Top="97.849" Height="28.716" Width="28.715">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00c5ff" Offset="0"></GradientStop>
+                                    <GradientStop Color="#0081b7" Offset="1"></GradientStop>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Data="M306,399.84 L308.02589,402.00406 306.59406,403.74057 308.4,405.6 303.6,405.6 305.76,402 303.84,402 z" Stretch="Fill" Canvas.Left="74.24" Canvas.Top="131.322" Height="63.023" Width="52.52">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00c5ff" Offset="0"></GradientStop>
+                                    <GradientStop Color="#0081b7" Offset="1"></GradientStop>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Path Data="M307.2,395.76l4.8-4.8v12.96l-1.92,1.2v-9.6l-1.44,1.44L307.2,395.76z" Stretch="Fill" Canvas.Left="44.324" Canvas.Top="44.983" Height="148.9" Width="50.472" RenderTransformOrigin="0.5,0.5">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00c5ff" Offset="0"></GradientStop>
+                                    <GradientStop Color="#0081b7" Offset="1"></GradientStop>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Canvas>
+                    <Ellipse Width="240" Height="8" VerticalAlignment="Bottom" Opacity="0.5">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush>
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Offset="1"/>
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </StackPanel>
+
+                <TextBlock x:Name="lblAppVersion" Margin="0,240,0,90" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#0081b7" TextAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="White" BlurRadius="1" ShadowDepth="1"/>
+                    </TextBlock.Effect>
+                    ........
+                </TextBlock>
+
+                <WrapPanel Margin="0,260,0,70" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center">
+                    <TextBlock x:Name="lblLoadingTxt" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#0081b7" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="White" BlurRadius="1" ShadowDepth="1"/>
+                        </TextBlock.Effect>
+                        Loading
+                    </TextBlock>
+                    <TextBlock x:Name="lblLoadingWaiting" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#0081b7" Visibility="Collapsed">...</TextBlock>
+                </WrapPanel>
+            </Grid>
+        </StackPanel>
+    </Border>
+</mz:BaseWindow>

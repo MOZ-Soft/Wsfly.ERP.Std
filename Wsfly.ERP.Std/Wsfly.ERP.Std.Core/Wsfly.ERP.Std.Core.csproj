@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5461AFE7-F2E4-44E3-B650-C07AB794D6BD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wsfly.ERP.Std.Core</RootNamespace>
+    <AssemblyName>Wsfly.ERP.Std.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\Wsfly.ERP.Std.Core.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JSCaller">
+      <HintPath>..\..\..\_Librarys\JSCaller.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\lib\net40\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SQLite.EF6.1.0.116.0\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SQLite.Linq.1.0.116.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>..\..\..\_Librarys\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="zxing">
+      <HintPath>..\..\..\_Librarys\ZXing.Net\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation">
+      <HintPath>..\..\..\_Librarys\ZXing.Net\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\BasePage.cs" />
+    <Compile Include="Base\BaseUserControl.cs" />
+    <Compile Include="Base\BaseWindow.cs" />
+    <Compile Include="Base\WsflyWindow.cs" />
+    <Compile Include="Encryption\EncryptionDES.cs" />
+    <Compile Include="Encryption\EncryptionAES.cs" />
+    <Compile Include="Encryption\EncryptionHelper.cs" />
+    <Compile Include="Encryption\EncryptionRSA.cs" />
+    <Compile Include="Extensions\DataRowExtensions.cs" />
+    <Compile Include="Extensions\DataTableExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Handler\ArrayHandler.cs" />
+    <Compile Include="Handler\ChineseHandler.cs" />
+    <Compile Include="Handler\ColorBrushHandler.cs" />
+    <Compile Include="Handler\ComHandler.cs" />
+    <Compile Include="Handler\CSharpCompilerHandler.cs" />
+    <Compile Include="Handler\DiskHandler.cs" />
+    <Compile Include="Handler\DispatcherHelper.cs" />
+    <Compile Include="Handler\DynamicCallHandler.cs" />
+    <Compile Include="Handler\EncryptionHandler.cs" />
+    <Compile Include="Handler\FileHandler.cs" />
+    <Compile Include="Handler\ImageBrushHandler.cs" />
+    <Compile Include="Handler\ImageHandler.cs" />
+    <Compile Include="Handler\JSHandler.cs" />
+    <Compile Include="Handler\JsonSerializer.cs" />
+    <Compile Include="Handler\JsonSerializerHandler.cs" />
+    <Compile Include="Handler\KeybordHandler.cs" />
+    <Compile Include="Handler\MathHandler.cs" />
+    <Compile Include="Handler\MemoryHandler.cs" />
+    <Compile Include="Handler\ObjectForScriptingHandler.cs" />
+    <Compile Include="Handler\PCHandler.cs" />
+    <Compile Include="Handler\PrimaryScreen.cs" />
+    <Compile Include="Handler\PropertyHandler.cs" />
+    <Compile Include="Handler\RegexHandler.cs" />
+    <Compile Include="Handler\RegistryHandler.cs" />
+    <Compile Include="Handler\ResourceHandler.cs" />
+    <Compile Include="Handler\ServiceHandler.cs" />
+    <Compile Include="Handler\ShortcutHandler.cs" />
+    <Compile Include="Handler\SystemDateTimeHandler.cs" />
+    <Compile Include="Handler\SortHandler.cs" />
+    <Compile Include="Handler\SqlHandler.cs" />
+    <Compile Include="Handler\StringHandler.cs" />
+    <Compile Include="Handler\SystemTaskBarHandler.cs" />
+    <Compile Include="Handler\UploadFileHandler.cs" />
+    <Compile Include="Handler\VerifyCodeHandler.cs" />
+    <Compile Include="Handler\VoiceHandler.cs" />
+    <Compile Include="Handler\WebHandler.cs" />
+    <Compile Include="Handler\WindowHandler.cs" />
+    <Compile Include="Handler\XmlHandler.cs" />
+    <Compile Include="Handler\XmlSerializerHandler.cs" />
+    <Compile Include="Handler\ZXingHandler.cs" />
+    <Compile Include="Inc\AppConfig.cs" />
+    <Compile Include="Inc\AppGlobal.cs" />
+    <Compile Include="Inc\AppHandler.cs" />
+    <Compile Include="Inc\AppLog.cs" />
+    <Compile Include="Inc\AppLogDB.cs" />
+    <Compile Include="Inc\DataType.cs" />
+    <Compile Include="Models\Results\APIResultInfo.cs" />
+    <Compile Include="Models\Results\AreaInfo.cs" />
+    <Compile Include="Models\Results\PayAccountInfo.cs" />
+    <Compile Include="Models\Results\PayResultInfo.cs" />
+    <Compile Include="Models\Sys\TableInfo.cs" />
+    <Compile Include="Models\Sys\UserAuthorityInfo.cs" />
+    <Compile Include="Models\Sys\UserConfig.cs" />
+    <Compile Include="Models\Sys\UserInfo.cs" />
+    <Compile Include="Models\Sys\UserRoleInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WCF\InvokeContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

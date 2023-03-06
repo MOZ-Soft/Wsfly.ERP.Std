@@ -1,0 +1,40 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.MZ.XMLEditorUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000" Margin="0">
+    <Border Background="#AAFFFFFF" Padding="10">
+        <Grid x:Name="gridMain">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <avalonEdit:TextEditor
+                    xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+                    Name="txtXML"
+                    SyntaxHighlighting="XML"
+                    FontFamily="Consolas"
+                    FontSize="12pt" 
+                    LineNumbersForeground="Black" 
+                    ShowLineNumbers="True">
+                <avalonEdit:TextEditor.Options>
+                    <avalonEdit:TextEditorOptions ShowSpaces="True" ColumnRulerPosition="10" >
+                    </avalonEdit:TextEditorOptions>
+                </avalonEdit:TextEditor.Options>
+            </avalonEdit:TextEditor>
+
+            <StackPanel Grid.Row="1">
+                <WrapPanel Style="{DynamicResource panelFormRow}">
+                    <TextBlock Style="{DynamicResource lblFormTitle}" Width="20"></TextBlock>
+                    <Button x:Name="btnOk" Style="{DynamicResource btnOk}">确定</Button>
+                    <Button x:Name="btnCancel" Style="{DynamicResource btnAction}">取消</Button>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</mz:BaseUserControl>

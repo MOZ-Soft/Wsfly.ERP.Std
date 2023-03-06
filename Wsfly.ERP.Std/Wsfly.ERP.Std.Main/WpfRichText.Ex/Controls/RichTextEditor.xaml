@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="WpfRichText.Ex.Controls.RichTextEditor" x:Name="uxRichTextEditor"    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:asis="clr-namespace:WpfRichText.Ex.AttachedProperties"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:wsConvert="clr-namespace:Wsfly.ERP.Std.AppCode.Converters"
+    Height="300">
+    <Border BorderBrush="#eee" BorderThickness="1" CornerRadius="3" Padding="3">
+        <Grid>
+            <Grid.Resources>
+                <sys:String x:Key="JSGS">{0}-40</sys:String>
+                <Style TargetType="{x:Type Button}" x:Key="formatTextStyle">
+                    <Setter Property="FontFamily" Value="Palatino Linotype"></Setter>
+                    <Setter Property="Width" Value="30"></Setter>
+                    <Setter Property="FontSize" Value ="14"></Setter>
+                    <Setter Property="CommandTarget" Value="{Binding ElementName=mainRTB}"></Setter>
+                </Style>
+                <Style TargetType="{x:Type Button}" x:Key="formatImageStyle">
+                    <Setter Property="Width" Value="30"></Setter>
+                    <Setter Property="CommandTarget" Value="{Binding ElementName=mainRTB}"></Setter>
+                </Style>
+                <wsConvert:CalculationConvert x:Key="Calculation" />
+            </Grid.Resources>
+            <DockPanel Name="mainPanel">
+                <ToolBar x:Name="Toolbar" Height="30" DockPanel.Dock="Top" ToolBarTray.IsLocked="True" Background="#fff" >
+                    <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Cut" ToolTip="剪切">
+                        <Image Source="Images\editcut.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Copy" ToolTip="复制">
+                        <Image Source="Images\EditCopy.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Paste" ToolTip="粘贴">
+                        <Image Source="Images\EditPaste.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Undo" ToolTip="取消">
+                        <Image Source="Images\EditUndo.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Redo" ToolTip="重做">
+                        <Image Source="Images\EditRedo.png"></Image>
+                    </Button>
+                    <Button x:Name="btnUploadImage" Style="{StaticResource formatImageStyle}" ToolTip="上传图片">
+                        <Image Source="Images\UploadImage.png"></Image>
+                    </Button>
+
+                    <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleBold" ToolTip="粗体">
+                        <TextBlock FontWeight="Bold">B</TextBlock>
+                    </Button>
+                    <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleItalic" ToolTip="斜体">
+                        <TextBlock FontStyle="Italic" FontWeight="Bold">I</TextBlock>
+                    </Button>
+                    <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleUnderline" ToolTip="下划线">
+                        <TextBlock TextDecorations="Underline" FontWeight="Bold">U</TextBlock>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseFontSize" ToolTip="增大字体">
+                        <Image Source="Images\CharacterGrowFont.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseFontSize" ToolTip="减小字体">
+                        <Image Source="Images\CharacterShrinkFont.png"></Image>
+                    </Button>
+
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.ToggleBullets" ToolTip="无序列表">
+                        <Image Source="Images\ListBullets.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.ToggleNumbering" ToolTip="有序列表">
+                        <Image Source="Images/ListNumbering.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignLeft" ToolTip="左对齐">
+                        <Image Source="Images\ParagraphLeftJustify.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignCenter" ToolTip="居中对齐">
+                        <Image Source="Images\ParagraphCenterJustify.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignRight" ToolTip="右对齐">
+                        <Image Source="Images\ParagraphRightJustify.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignJustify" ToolTip="左右对齐">
+                        <Image Source="Images\ParagraphFullJustify.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseIndentation" ToolTip="增加缩进">
+                        <Image Source="Images\ParagraphIncreaseIndentation.png"></Image>
+                    </Button>
+                    <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseIndentation" ToolTip="减少缩进 ">
+                        <Image Source="Images\ParagraphDecreaseIndentation.png"></Image>
+                    </Button>
+                </ToolBar>
+                <StackPanel>
+                    <RichTextBox Name="mainRTB" AcceptsTab="True" Height="{Binding Path=Height,Converter={StaticResource Calculation},ConverterParameter={StaticResource JSGS}, ElementName=uxRichTextEditor}" asis:RichTextboxAssistant.BoundDocument="{Binding Path=Text, ElementName=uxRichTextEditor}" VerticalScrollBarVisibility="Auto" BorderThickness="0" Background="#AAFFFFFF" />
+                </StackPanel>
+            </DockPanel>
+        </Grid>
+    </Border>
+</UserControl>

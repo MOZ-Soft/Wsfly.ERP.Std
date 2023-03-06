@@ -1,0 +1,52 @@
+﻿<mz:BaseWindow x:Name="NavWindow" x:Class="Wsfly.ERP.Std.Views.Components.PageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+        Height="640" Width="1000" ResizeMode="NoResize" WindowStyle="None">
+    <Border BorderBrush="{DynamicResource ResourceKey=WinBorderBrush}" BorderThickness="5">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40px" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!--标题栏-->
+            <StackPanel x:Name="pTop" Background="{DynamicResource ResourceKey=WinBorderBrush}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="100px"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!--标题栏-->
+                    <StackPanel Margin="10" Grid.Column="0">
+                        <TextBlock x:Name="lblTitle" FontSize="14" Foreground="White" Text="{Binding ElementName=NavWindow,Path=Title}"></TextBlock>
+                    </StackPanel>
+                    
+                    <!--操作栏-->
+                    <StackPanel Margin="10" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel x:Name="pMin" Width="20" Height="20" Margin="5,0,0,0" Cursor="Hand" Background="{DynamicResource ResourceKey=WinBorderBrush}">
+                            <Line X1="4" Y1="14" X2="16" Y2="14" Stroke="White" StrokeThickness="2"></Line>
+                        </StackPanel>
+                        <StackPanel x:Name="pMax" Width="20" Height="20" Margin="5,0,0,0" Cursor="Hand" Background="{DynamicResource ResourceKey=WinBorderBrush}">
+                            <Rectangle Height="12" Width="12" Stroke="White" StrokeThickness="2" Margin="4"></Rectangle>
+                        </StackPanel>
+                        <StackPanel x:Name="pClose" Width="20" Height="20" Margin="5,0" Cursor="Hand" Background="{DynamicResource ResourceKey=WinBorderBrush}">
+                            <Canvas>
+                                <Line X1="5" Y1="5" X2="15" Y2="15" Stroke="#fff" StrokeThickness="2"></Line>
+                                <Line X1="15" Y1="5" X2="5" Y2="15" Stroke="#fff" StrokeThickness="2"></Line>
+                            </Canvas>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <!--主要窗口-->
+            <ScrollViewer x:Name="scrollMainFrame" Height="Auto" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" ClipToBounds="True" FocusVisualStyle="{x:Null}">
+                <ScrollViewer.Content>
+                    <Frame x:Name="frameMain" NavigationUIVisibility="Hidden"></Frame>
+                </ScrollViewer.Content>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</mz:BaseWindow>

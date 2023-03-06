@@ -1,0 +1,34 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.ERP.Std.Views.Parts.EditFullTextUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.ERP.Std.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.ERP.Std.AppCode.Base"
+             xmlns:ex="clr-namespace:Smith.WPF.HtmlEditor;assembly=Smith.WPF.HtmlEditor"
+             xmlns:rtCtl="clr-namespace:WpfRichText.Ex.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="680">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50px" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="borderEditors" BorderBrush="LightGray" BorderThickness="1" Visibility="Visible">
+            <Grid>
+                <rtCtl:RichTextEditor x:Name="htmlEditor" />
+                <WebBrowser x:Name="browserEditor" Visibility="Collapsed"></WebBrowser>
+            </Grid>
+        </Border>
+
+        <StackPanel x:Name="panelDropImages" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Foreground="Gray" FontSize="16">放开鼠标，插入拖拽的图片！</TextBlock>
+        </StackPanel>
+
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="btnOK" Style="{DynamicResource btnOk}">确定</Button>
+            <Button x:Name="btnCancel" Style="{DynamicResource btnAction}" >取消</Button>
+        </WrapPanel>
+    </Grid>
+</mz:BaseUserControl>

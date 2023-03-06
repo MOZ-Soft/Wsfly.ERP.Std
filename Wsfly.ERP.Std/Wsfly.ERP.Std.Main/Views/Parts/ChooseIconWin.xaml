@@ -1,0 +1,44 @@
+﻿<mz:BaseUserControl x:Class="Wsfly.Client.PC.Views.Parts.ChooseIconWin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wsfly.Client.PC.Views.Parts"
+             xmlns:mz="clr-namespace:Wsfly.Client.PC.AppCode.Base"
+             xmlns:wsConvert="clr-namespace:Wsfly.Client.PC.AppCode.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1000">
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer x:Name="scrollMain" Height="Auto" Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" FocusVisualStyle="{x:Null}">
+            <ScrollViewer.Content>
+                <WrapPanel x:Name="panelItems"></WrapPanel>
+            </ScrollViewer.Content>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1">
+            <Grid VerticalAlignment="Bottom" Height="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="280px"/>
+                </Grid.ColumnDefinitions>
+                <Border Background="#ddd" Opacity="0.2" Height="50" VerticalAlignment="Bottom" Grid.ColumnSpan="2"></Border>
+
+                <WrapPanel VerticalAlignment="Center" Margin="10 0">
+                    <TextBlock Margin="5" FontSize="14" VerticalAlignment="Center">添加图标：</TextBlock>
+                    <Button x:Name="btnChoosePic" Style="{DynamicResource btn}" VerticalAlignment="Center">选择图标</Button>
+                    <TextBlock VerticalAlignment="Center" Foreground="Gray">* 图标大小(px) 主菜单：45x45，子菜单：32x32</TextBlock>
+                </WrapPanel>
+                <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
+                    <TextBlock x:Name="lblPageCount" Margin="5 17"></TextBlock>
+                    <Button x:Name="btnPrevPage" Style="{DynamicResource btnMini}" Margin="0 10">上一页</Button>
+                    <Button x:Name="btnNextPage" Style="{DynamicResource btnMini}" Margin="5 10">下一页</Button>
+                    <Button x:Name="btnChoose" Style="{DynamicResource btnOk}" Margin="5 10">确定</Button>
+                </WrapPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</mz:BaseUserControl>

@@ -1,0 +1,38 @@
+﻿<Window x:Class="Wsfly.ERP.Std.Views.Components.AlertWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="温馨提示" Height="200" Width="300" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border BorderBrush="{DynamicResource ResourceKey=WinBorderBrush}" BorderThickness="5">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35px"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40px"/>
+            </Grid.RowDefinitions>
+            <DockPanel x:Name="pTitle" Background="{DynamicResource ResourceKey=WinBorderBrush}" MouseLeftButtonDown="pTitle_MouseLeftButtonDown">
+                <StackPanel Width="250" HorizontalAlignment="Left" Height="20" Margin="5">
+                    <TextBlock x:Name="txtTitle" Foreground="White" Padding="2">温馨提示：</TextBlock>
+                </StackPanel>
+                <StackPanel Width="20" HorizontalAlignment="Right" Height="20" Margin="0,5">
+                    <StackPanel x:Name="pClose" Width="16" Height="16" Cursor="Hand" Margin="0,2" Background="{DynamicResource ResourceKey=WinBorderBrush}" HorizontalAlignment="Right" MouseLeftButtonDown="pClose_MouseLeftButtonDown" ToolTip="关闭">
+                        <Canvas>
+                            <Line X1="4" Y1="4" X2="12" Y2="12" Stroke="#fff" StrokeThickness="1"></Line>
+                            <Line X1="12" Y1="4" X2="4" Y2="12" Stroke="#fff" StrokeThickness="1"></Line>
+                        </Canvas>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+            <ScrollViewer x:Name="scrollMainFrame" Height="115px" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" FocusVisualStyle="{x:Null}">
+                <ScrollViewer.Content>
+                    <WrapPanel x:Name="pMain" Grid.Row="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock x:Name="txtContent" TextWrapping="Wrap"></TextBlock>
+                    </WrapPanel>
+                </ScrollViewer.Content>
+            </ScrollViewer>
+            <WrapPanel x:Name="pBtns" Grid.Row="2" HorizontalAlignment="Center" Margin="3,0,10,0" VerticalAlignment="Center">
+                <Button x:Name="btnOk" Width="77" Style="{DynamicResource ResourceKey=btnWin}" IsDefault="True" Cursor="Hand">确 定</Button>
+                <Button x:Name="btnCancel" Width="77" Style="{DynamicResource ResourceKey=btnAction}" Margin="5,0,0,0" IsCancel="True" Cursor="Hand" Visibility="Collapsed">取 消</Button>
+            </WrapPanel>
+        </Grid>
+    </Border>
+</Window>
