@@ -1,6 +1,6 @@
 # Wsfly.ERP.Std
 
-VS2019
+Visual Studio 2019
 
 默认数据库仅有系统功能，如需有进销存等功能的库，请将/AppData/目录下的数据库复制到/bin/Debug且将文件改名为：Wsfly.DC.ERP.db
 
