@@ -2,6 +2,7 @@
 
 Visual Studio 2019
 
+STD官网：http://erp.wsfly.com/Moz/StdVersion
 
 登陆系统
 账号：admin
