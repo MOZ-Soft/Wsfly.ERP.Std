@@ -28,11 +28,11 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <param name="Source">原数组</param>
         /// <param name="str">字符串</param>
         /// <returns>合并后的数组(数组+字符串)</returns>
-        public static int[] AppendIntArray(int[] Source, int Val)
+        public static int[] AppendIntArray(int[] Source, int str)
         {
             int[] result = new int[Source.Length + 1];
             Source.CopyTo(result, 0);
-            result[Source.Length] = Val;
+            result[Source.Length] = str;
             return result;
         }
 
