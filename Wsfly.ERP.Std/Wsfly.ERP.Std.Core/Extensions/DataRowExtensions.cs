@@ -9,6 +9,9 @@ using Wsfly.ERP.Std.Core.Handler;
 
 namespace Wsfly.ERP.Std.Core.Extensions
 {
+    /// <summary>
+    /// 数据行扩展方法
+    /// </summary>
     public static class DataRowExtensions
     {
         /// <summary>
@@ -201,7 +204,6 @@ namespace Wsfly.ERP.Std.Core.Extensions
         /// </summary>
         /// <param name="target"></param>
         /// <param name="columnName"></param>
-        /// <param name="format"></param>
         /// <returns></returns>
         //[DebuggerStepThrough]
         public static Dictionary<string, dynamic> GetDictionary(this DataRow target, string columnName)

@@ -43,19 +43,11 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 取得文件名
-        /****************************************
-           * 函数名称：GetFileName
-           * 功能说明：取得文件名
-           * 参    数：文件路径
-           * 调用示列：
-           *             string path = "aaa.aspx";        
-           *             string s = Kernel.GetFileName(path);         
-         *****************************************/
         /// <summary>
         /// 取得文件名
         /// </summary>
-        /// <param name="filename">文件路径</param>
-        /// <returns>.gif|.html格式</returns>
+        /// <param name="path">文件路径</param>
+        /// <returns></returns>
         public static string GetFileName(string path)
         {
             path = path.Replace("\\", "/");
@@ -87,14 +79,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 取得文件后缀名
-        /****************************************
-           * 函数名称：GetPostfix
-           * 功能说明：取得文件后缀名
-           * 参    数：filename:文件名称
-           * 调用示列：
-           *             string filename = "aaa.aspx";        
-           *             string s = Kernel.GetPostfixStr(filename);         
-         *****************************************/
         /// <summary>
         /// 取后缀名
         /// </summary>
@@ -260,15 +244,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 写文件
-        /****************************************
-           * 函数名称：WriteFile
-           * 功能说明：写文件,会覆盖掉以前的内容
-           * 参     数：Path:文件路径,Strings:文本内容
-           * 调用示列：
-           *             string Path = Server.MapPath("Default2.aspx");       
-           *             string Strings = "这是我写的内容啊";
-           *             Kernel.WriteFile(Path,Strings);
-         *****************************************/
         /// <summary>
         /// 写文件
         /// </summary>
@@ -308,14 +283,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 读文件
-        /****************************************
-           * 函数名称：ReadFile
-           * 功能说明：读取文本内容
-           * 参     数：Path:文件路径
-           * 调用示列：
-           *             string Path = Server.MapPath("Default2.aspx");       
-           *             string s = Kernel.ReadFile(Path);
-         *****************************************/
         /// <summary>
         /// 读文件
         /// </summary>
@@ -384,19 +351,10 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 追加文件
-        /****************************************
-           * 函数名称：FileAdd
-           * 功能说明：追加文件内容
-           * 参     数：Path:文件路径,strings:内容
-           * 调用示列：
-           *             string Path = Server.MapPath("Default2.aspx");     
-           *             string Strings = "新追加内容";
-           *             Kernel.FileAdd(Path, Strings);
-         *****************************************/
         /// <summary>
         /// 追加文件
         /// </summary>
-        /// <param name="Path">文件路径</param>
+        /// <param name="path">文件路径</param>
         /// <param name="strings">内容</param>
         public static void FileAdd(string path, string strings)
         {
@@ -413,20 +371,11 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 拷贝文件
-        /****************************************
-           * 函数名称：FileCoppy
-           * 功能说明：拷贝文件
-           * 参     数：OrignFile:原始文件,NewFile:新文件路径
-           * 调用示列：
-           *             string orignFile = Server.MapPath("Default2.aspx");     
-           *             string NewFile = Server.MapPath("Default3.aspx");
-           *             Kernel.FileCoppy(OrignFile, NewFile);
-         *****************************************/
         /// <summary>
         /// 拷贝文件
         /// </summary>
-        /// <param name="OrignFile">原始文件</param>
-        /// <param name="NewFile">新文件路径</param>
+        /// <param name="orignFile">原始文件</param>
+        /// <param name="newFile">新文件路径</param>
         public static void FileCoppy(string orignFile, string newFile)
         {
             if (!File.Exists(orignFile)) return;
@@ -437,18 +386,10 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 删除文件
-        /****************************************
-           * 函数名称：FileDel
-           * 功能说明：删除文件
-           * 参     数：Path:文件路径
-           * 调用示列：
-           *             string Path = Server.MapPath("Default3.aspx");    
-           *             Kernel.FileDel(Path);
-         *****************************************/
         /// <summary>
         /// 删除文件
         /// </summary>
-        /// <param name="Path">路径</param>
+        /// <param name="path">路径</param>
         public static void FileDel(string path)
         {
             if (!File.Exists(path)) return;
@@ -457,20 +398,11 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 移动文件
-        /****************************************
-           * 函数名称：FileMove
-           * 功能说明：移动文件
-           * 参     数：OrignFile:原始路径,NewFile:新文件路径
-           * 调用示列：
-           *             string orignFile = Server.MapPath("../说明.txt");    
-           *             string NewFile = Server.MapPath("../../说明.txt");
-           *             Kernel.FileMove(OrignFile, NewFile);
-         *****************************************/
         /// <summary>
         /// 移动文件
         /// </summary>
-        /// <param name="OrignFile">原始路径</param>
-        /// <param name="NewFile">新路径</param>
+        /// <param name="orignFile">原始路径</param>
+        /// <param name="newFile">新路径</param>
         public static void FileMove(string orignFile, string newFile)
         {
             if (!File.Exists(orignFile)) return;
@@ -478,38 +410,21 @@ namespace Wsfly.ERP.Std.Core.Handler
             File.Move(orignFile, newFile);
         }
         #endregion
-        
+
         #region 在当前目录下创建目录
-        /****************************************
-           * 函数名称：FolderCreate
-           * 功能说明：在当前目录下创建目录
-           * 参     数：OrignFolder:当前目录,NewFloder:新目录
-           * 调用示列：
-           *             string orignFolder = Server.MapPath("test/");    
-           *             string NewFloder = "new";
-           *             Kernel.FolderCreate(OrignFolder, NewFloder); 
-         *****************************************/
         /// <summary>
         /// 在当前目录下创建目录
         /// </summary>
-        /// <param name="OrignFolder">当前目录</param>
-        /// <param name="NewFloder">新目录</param>
-        public static void CreateDirectory(string orignFolder, string NewFloder)
+        /// <param name="orignFolder">当前目录</param>
+        /// <param name="newFloder">新目录</param>
+        public static void CreateDirectory(string orignFolder, string newFloder)
         {
             Directory.SetCurrentDirectory(orignFolder);
-            Directory.CreateDirectory(NewFloder);
+            Directory.CreateDirectory(newFloder);
         }
         #endregion
 
         #region 递归删除文件夹目录及文件
-        /****************************************
-           * 函数名称：DeleteFolder
-           * 功能说明：递归删除文件夹目录及文件
-           * 参     数：dir:文件夹路径
-           * 调用示列：
-           *             string dir = Server.MapPath("test/");  
-           *             Kernel.DeleteFolder(dir);       
-         *****************************************/
         /// <summary>
         /// 递归删除文件夹目录及文件
         /// </summary>
@@ -592,7 +507,11 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 获取文件夹的大小
-
+        /// <summary>
+        /// 获取文件夹的大小
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static long GetDirectorySize(string path)
         {
             ///如果文件夹不存在
@@ -620,15 +539,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         #endregion
 
         #region 将指定文件夹下面的所有内容copy到目标文件夹下面 果目标文件夹为只读属性就会报错。
-        /****************************************
-           * 函数名称：CopyDir
-           * 功能说明：将指定文件夹下面的所有内容copy到目标文件夹下面 果目标文件夹为只读属性就会报错。
-           * 参     数：srcPath:原始路径,aimPath:目标文件夹
-           * 调用示列：
-           *             string srcPath = Server.MapPath("test/");  
-           *             string aimPath = Server.MapPath("test1/");
-           *             Kernel.CopyDir(srcPath,aimPath);   
-         *****************************************/
         /// <summary>
         /// 指定文件夹下面的所有内容copy到目标文件夹下面
         /// </summary>
