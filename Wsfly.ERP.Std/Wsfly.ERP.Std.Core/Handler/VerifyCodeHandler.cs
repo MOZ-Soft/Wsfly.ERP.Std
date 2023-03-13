@@ -253,7 +253,7 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// </summary>
         /// <param name="srcBmp"></param>
         /// <param name="bXDir"></param>
-        /// <param name="nMultValue">波形的幅度倍数</param>
+        /// <param name="dMultValue">波形的幅度倍数</param>
         /// <param name="dPhase">波形的起始相位，取值区间[0-2*PI)</param>
         /// <returns></returns>
         public System.Drawing.Bitmap TwistImage(Bitmap srcBmp, bool bXDir, double dMultValue, double dPhase)
@@ -298,7 +298,7 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <summary>
         /// 生成随机字符码
         /// </summary>
-        /// <param name="codeLen">随机码长度</param>
+        /// <param name="len">随机码长度</param>
         /// <returns>产生的随机码</returns>
         public string GetVerifyCode(int len)
         {

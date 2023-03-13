@@ -524,7 +524,6 @@ namespace Wsfly.ERP.Std.Core.Handler
             return r;
         }
         /// <summary>
-        /// <函数：Encode>
         /// 作用：将字符串内容转化为16进制数据编码，其逆过程是Decode
         /// 参数说明：
         /// strEncode 需要转化的原始字符串
@@ -545,7 +544,6 @@ namespace Wsfly.ERP.Std.Core.Handler
 
 
         /// <summary>
-        /// <函数：Decode>
         /// 作用：将16进制数据编码转化为字符串，是Encode的逆过程
         /// </summary>
         /// <param name="strDecode"></param>
@@ -751,7 +749,7 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <summary>
         /// 替换字符
         /// </summary>
-        /// <param name="value">字符串</param>
+        /// <param name="source">字符串</param>
         /// <param name="oldChar">要替换的字符</param>
         /// <param name="newChar">替换为的字符</param>
         /// <returns></returns>

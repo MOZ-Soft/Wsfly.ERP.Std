@@ -16,7 +16,7 @@ public partial class AppLog
     private static string _RootPath = AppDomain.CurrentDomain.BaseDirectory;
 
     /// <summary>
-    /// 异常日志
+    /// 写异常日志
     /// </summary>
     /// <param name="ex">异常信息</param>
     /// <param name="des">异常描述</param>
@@ -53,7 +53,6 @@ public partial class AppLog
     /// <summary>
     /// 写调试日志
     /// </summary>
-    /// <param name="describe"></param>
     public static void WriteDebugLog(string describe, string fileType = "")
     {
         string log = "[调试]" + describe;
@@ -63,9 +62,8 @@ public partial class AppLog
         WriteSysLog(log, fileName);
     }
     /// <summary>
-    /// 写异常日志
+    /// 写错误日志
     /// </summary>
-    /// <param name="describe"></param>
     public static void WriteErrorLog(string describe, string fileType = "")
     {
         string log = "[异常]" + describe;
@@ -77,9 +75,6 @@ public partial class AppLog
     /// <summary>
     /// 写系统日志
     /// </summary>
-    /// <param name="type"></param>
-    /// <param name="title"></param>
-    /// <param name="describe"></param>
     public static void WriteSysLog(string type, string title, string describe)
     {
         string log = "[" + type + "]" + title + (string.IsNullOrEmpty(describe) ? "" : "\r\n[描述]" + describe);
@@ -87,27 +82,26 @@ public partial class AppLog
         WriteSysLog(log);
     }
     /// <summary>
-    /// 写日志
+    /// 写系统日志
     /// </summary>
-    /// <param name="log"></param>
     private static void WriteSysLog(string log, string fileName = "sys")
     {
         try
         {
             string wsName = "Wsfly";
             string dirName = "AppLog";
-            ///文件
+            //文件
             string path = _RootPath + "\\" + dirName + "\\" + wsName + "." + fileName + ".log";
 
-            ///如果目录不存在则创建目录
+            //如果目录不存在则创建目录
             if (!Directory.Exists(_RootPath + "\\" + dirName + "\\")) Directory.CreateDirectory(_RootPath + "\\" + dirName + "\\");
 
-            ///处理内容
+            //处理内容
             log = "\r\n\r\n=======================================================================\r\n" + log;
             log += "\r\n[日期]" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ffff");
 
-            ///文件是否存在
-            ///如果文件大小超过10MB则备份
+            //文件是否存在
+            //如果文件大小超过10MB则备份
             if (File.Exists(path))
             {
                 FileInfo file = new FileInfo(path);
@@ -118,7 +112,7 @@ public partial class AppLog
                 }
             }
 
-            ///如果文件存在则追加
+            //如果文件存在则追加
             if (File.Exists(path))
             {
                 FileAdd(path, log);
@@ -133,8 +127,6 @@ public partial class AppLog
     /// <summary>
     /// 写文件
     /// </summary>
-    /// <param name="Path">文件路径</param>
-    /// <param name="Strings">文件内容</param>
     private static void WriteFile(string path, string content, string charset = null)
     {
         Encoding encoding = Encoding.UTF8;
@@ -166,8 +158,6 @@ public partial class AppLog
     /// <summary>
     /// 追加文件
     /// </summary>
-    /// <param name="Path">文件路径</param>
-    /// <param name="strings">内容</param>
     private static void FileAdd(string path, string strings)
     {
         if (!Directory.Exists(Path.GetDirectoryName(path)))
@@ -183,8 +173,6 @@ public partial class AppLog
     /// <summary>
     /// 移动文件
     /// </summary>
-    /// <param name="OrignFile">原始路径</param>
-    /// <param name="NewFile">新路径</param>
     private static void FileMove(string orignFile, string newFile)
     {
         if (!File.Exists(orignFile)) return;

@@ -22,7 +22,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <summary>
         /// 对象序列化为Json字符串
         /// </summary>
-        /// <param name="t"></param>
         /// <returns></returns>
         public static string ToJson(T obj)
         {
@@ -81,7 +80,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <summary>
         /// 返回实体类列表Json字符串
         /// </summary>
-        /// <param name="list"></param>
         /// <returns></returns>
         public static string ToJson(List<T> list, string attrNames)
         {
@@ -99,7 +97,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <summary>
         /// 返回实体类列表Json字符串
         /// </summary>
-        /// <param name="list"></param>
         /// <returns></returns>
         public static string ToJson(IList<T> list, string attrNames)
         {
@@ -146,7 +143,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <summary>
         /// 返回实体类列表Json字符串
         /// </summary>
-        /// <param name="list"></param>
         /// <returns></returns>
         private static string ObjectsToJson(IList<T> list, string attrNames)
         {

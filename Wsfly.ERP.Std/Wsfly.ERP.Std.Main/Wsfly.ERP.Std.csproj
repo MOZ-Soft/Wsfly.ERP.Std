@@ -207,6 +207,7 @@
     <Compile Include="AppCode\Dao\Base\PagingHandler.cs" />
     <Compile Include="AppCode\Dao\Base\T-SQLHandler.cs" />
     <Compile Include="AppCode\Dao\Base\Transform.cs" />
+    <Compile Include="AppCode\Engine\HttpEngine.cs" />
     <Compile Include="AppCode\Enums\ActionState.cs" />
     <Compile Include="AppCode\Enums\AlertWindowButton.cs" />
     <Compile Include="AppCode\Enums\FormTipsType.cs" />
@@ -785,7 +786,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppCode\Engine\" />
     <Folder Include="Views\Independents\" />
   </ItemGroup>
   <ItemGroup>

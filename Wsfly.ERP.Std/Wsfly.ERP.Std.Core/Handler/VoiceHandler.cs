@@ -111,7 +111,7 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// <param name="msg"></param>
         public static void PlaySound(string msg, int rate = 0, int volume = 100)
         {
-            ///初始化
+            //初始化
             if (!isInit) { new VoiceHandler(); }
 
             try

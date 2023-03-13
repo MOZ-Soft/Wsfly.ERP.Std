@@ -1237,7 +1237,7 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// ±£´æÍ¼Æ¬
         /// </summary>
         /// <param name="img"></param>
-        /// <param name="img"></param>
+        /// <param name="path"></param>
         /// <returns></returns>
         public static void SaveImage(System.Drawing.Image img, string path)
         {

@@ -101,7 +101,6 @@ namespace Wsfly.ERP.Std.Core.Handler
         /// 获取键值
         /// </summary>
         /// <param name="regName"></param>
-        /// <param name="subKey"></param>
         /// <param name="name"></param>
         public static object GetValue(string regName, string name)
         {

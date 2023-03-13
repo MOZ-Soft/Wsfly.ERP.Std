@@ -15,11 +15,10 @@ namespace Wsfly.ERP.Std.Core.Handler
         #region 验证字符
 
         /// <summary>
-        /// 验证字符是否在4至12之间
+        /// 验证字符是否在指定长度之间
         /// </summary>
-        /// <param name="value"></param>
         /// <returns></returns>
-        public static bool IsValidByte(string value, int minSize, int maxSize)
+        public static bool IsValidString(string value, int minSize, int maxSize)
         {
             return Regex.IsMatch(value, @"^[a-zA-Z0-9_]{" + minSize + "," + maxSize + "}$");
         }

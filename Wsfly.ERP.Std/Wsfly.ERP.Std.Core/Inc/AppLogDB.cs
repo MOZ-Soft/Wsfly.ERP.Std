@@ -18,7 +18,7 @@ public class AppLogDB
         AddLog(TableType.Journalises, title, type);
     }
     /// <summary>
-    /// 异常日志
+    /// 写异常日志
     /// </summary>
     public static void AddBugLog(Exception ex, string title = "", string type = "")
     {
@@ -49,7 +49,7 @@ public class AppLogDB
         AddLog(TableType.Debugs, title, type);
     }
     /// <summary>
-    /// 写异常日志
+    /// 写错误日志
     /// </summary>
     public static void AddErrorLog(string title, string type = "")
     {
